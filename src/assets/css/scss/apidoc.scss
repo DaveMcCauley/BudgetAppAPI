@@ -1,0 +1,508 @@
+$headerTextSize: 16px;
+$baseTextSize:   14px;
+$smallTextSize:  13px;
+$opTextSize:     11px;
+$codeTextSize:   11px;
+
+$regBlack: rgb(51,51,51);
+$regWhite: rgb(230,230,230);
+$regGray:  rgb(120,120,120);
+$regLtGray: rgb(210,210,210);
+
+$colorPOSTbg:      rgb(231, 246, 236);
+$colorPOSTfeat:    rgb(16, 165, 74);
+$colorPOSTborder:  rgb(195,232,209);
+$colorPOSTrev:     rgb(250,250,250);
+
+$colorPUTbg:      rgb(249,242,233);
+$colorPUTfeat:    rgb(197,134,43);
+$colorPUTborder:  rgb(240,224,202);
+$colorPUTrev:     rgb(250,250,250);
+
+$colorGETbg:      rgb(231,240,247);
+$colorGETfeat:    rgb(15,106,180);
+$colorGETborder:  rgb(195,217,236);
+$colorGETrev:     rgb(250,250,250);
+
+$colorDELETEbg:     rgb(245,232,232);
+$colorDELETEfeat:   rgb(164,30,34);
+$colorDELETEborder: rgb(232,198,199);
+$colorDELETErev:    rgb(250,250,250);
+
+$borderRadius: 5px;
+$borderWidth:  1px;
+
+$color-json-bg:       rgb(250,250,250);
+$color-json-property: rgb(85,85,170);
+$font-json-size:      13px;
+
+$normal-font-stack: "Helvetica Neue",Helvetica,Arial,sans-serif;
+$code-font-stack:   Menlo,Monaco,Consolas,"Courier New",monospace;
+
+html {
+  overflow-y: scroll;
+}
+
+ul,
+li {
+  list-style: none;
+  padding-left: 0;
+}
+
+// TODO REMOVE
+table {
+  margin: 0 10px 0;
+  font-weight: 500;
+}
+
+// TODO: DELETE THIS NO LONGER ISING TABLES>
+thead {
+  border-bottom-style: solid;
+  border-color: $regLtGray;
+  border-bottom-width: 1px;
+  color: $regGray;
+  font-size: $opTextSize;
+}
+
+// TODO REMOVE
+tbody {
+  color: $regBlack;
+  font-size: $baseTextSize;
+}
+
+// TODO REMOVE
+td {
+  padding-top: 0;
+  padding-bottom:4px;
+}
+
+// TODO REMOVE
+td:first-child {
+  padding-top: 4px;
+}
+
+// TODO REMOVE
+li.resource-item:not(:first-child) {
+  border-top-color: $regLtGray;
+  border-top-style: solid;
+  border-top-width: 1px;
+  padding-top: 10px;
+}
+
+.resource-heading {
+  color: $regGray;
+  font-size: $headerTextSize;
+  font-weight: bold;
+  overflow: auto;
+  margin-bottom: 10px;
+}
+
+.resource-heading a {
+  color: $regBlack;
+}
+
+.resource-ctrls a {
+  font-size: $baseTextSize;
+  font-weight: normal;
+}
+
+.endpoint-heading {
+  border-style: solid;
+  border-width: $borderWidth;
+  border-color: inherit;
+  margin-bottom: 10px;
+}
+
+.operator {
+  border-radius: $borderRadius;
+  display: inline-block;
+  font-size: $opTextSize;
+  font-weight: bold;
+  padding-top: 7px;
+  text-align: center;
+  width: 50px;
+  height: 30px;
+}
+
+a:link.operator,
+a:visited.operator,
+a:hover.operator,
+a:active.operator {
+  text-decoration: none;
+}
+
+
+.endpoint-path {
+  font-size: $baseTextSize;
+  padding-top: 5px;
+  margin-left: 10px;
+}
+
+a.endpoint-path {
+  color: $regBlack
+}
+
+.endpoint-desc {
+ padding-top: 5px;
+ margin-right: 10px;
+}
+
+/* NOTE: .collapse does not like padding on the
+   animated div. Don't do it, or will look wonky */
+.endpoint-content {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 1px;
+	margin-bottom: 10px;
+  margin-top: -11px;
+}
+
+.endpoint-content h1 {
+	font-size: $baseTextSize;
+	margin-left: 10px;
+}
+
+.endpoint-content h2 {
+	color: $regGray;
+	font-size: $smallTextSize;
+	margin-left: 10px;
+}
+
+
+/*
+ * styling for the POST operator type
+ */
+
+.post {
+  background-color: $colorPOSTbg;
+  border-color: $colorPOSTborder;
+}
+
+.post .operator {
+  color: $colorPOSTrev;
+  background-color: $colorPOSTfeat;
+}
+
+.post .endpoint-desc {
+  color: $colorPOSTfeat;
+}
+
+.post .endpoint-content h1 {
+	color:$colorPOSTfeat;
+}
+
+/*
+ * styling for the PUT operator type
+ */
+
+.put {
+  background-color: $colorPUTbg;
+  border-color: $colorPUTborder;
+}
+
+.put .operator {
+  color: $colorPUTrev;
+  background-color: $colorPUTfeat;
+}
+
+.put .endpoint-desc {
+  color: $colorPUTfeat;
+}
+
+.put .endpoint-content h1 {
+  color: $colorPUTfeat;
+}
+
+/*
+ * styling for the GET operator type
+ */
+
+.get {
+  background-color: $colorGETbg;
+  border-color: $colorGETborder;
+}
+
+.get .operator {
+  color: $colorGETrev;
+  background-color: $colorGETfeat;
+}
+
+.get .endpoint-desc {
+  color: $colorGETfeat;
+}
+
+.get .endpoint-content h1 {
+  color: $colorGETfeat;
+}
+
+/*
+ * styling for the DELETE operator type
+ */
+
+.delete {
+  background-color: $colorDELETEbg;
+  border-color: $colorDELETEborder;
+}
+
+.delete .operator {
+  color: $colorDELETErev;
+  background-color: $colorDELETEfeat;
+}
+
+.delete .endpoint-desc {
+  color: $colorDELETEfeat;
+}
+
+.delete .endpoint-content h1 {
+  color: $colorDELETEfeat;
+}
+
+/*
+ * These are the return lozenges
+ */
+
+// TODO REMOVE.
+.return {
+  border-radius: 3px;
+  color: $regWhite;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding-top: 0;
+  text-align: center;
+  width: 75px;
+  height: 16px;
+}
+
+/*
+ * these are my lozenge classes
+ */
+
+.ok {
+  background-color: rgb(20,137,44);
+  border-radius: 3px;
+  color: $regWhite;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  height: 16px;
+  padding-top: 0;
+  text-align: center;
+  width: 75px;
+}
+
+.err {
+  background-color: rgb(208,68,55);
+  border-radius: 3px;
+  color: $regWhite;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  height: 16px;
+  padding-top: 0;
+  text-align: center;
+  width: 75px;
+}
+
+.loznote {
+  background-color: rgb(255,168,0);
+  border-radius: 3px;
+  color: $regBlack;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  height: 16px;
+  padding-top: 0;
+  text-align: center;
+  width: 75px;
+}
+
+
+/*
+ * My JSON styling. Provides indentation,
+ * a background, and monospaced font stack. NOTE: the font
+ * stack is based on bootstrap.min.css:5. This could change
+ * so if re update the bootstrap... check this.
+ */
+
+.json {
+  background-color: $color-json-bg;
+  border-width: 1px;
+  border-color: $regLtGray;
+  border-style: solid;
+  display: inline-block;
+  font-family: $code-font-stack;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.json div {
+  margin-left: 10px;
+  color: $regBlack;
+  font-size: 13px;
+  font-weight: 500;
+  background-color: inherit;
+}
+
+/*
+ * separate style for data models.
+ */
+.json-model {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.json-model div {
+  margin-left: 10px;
+  font-size: $font-json-size;
+  font-weight: 500;
+}
+
+.json.example {
+  position: relative;
+  margin-top: 25px;
+  margin-left: 0;
+}
+
+.json.example::before {
+  color: $regBlack;
+  content: "Example";
+  font-family: $normal-font-stack;
+  font-size: $smallTextSize;
+  font-weight: 700;
+  left: -0px;
+  position: absolute;
+  text-transform: uppercase;
+  top: -20px;
+}
+
+.propName {
+  color: $regBlack;
+  font-weight: 700;
+}
+
+.propType {
+  color: $color-json-property;
+  font-weight: 500;
+
+}
+.propOpt {
+  color: $regBlack;
+  font-style: italic;
+}
+
+/*
+ * styling for the parameter/argument lists
+ */
+
+.param-item {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  padding: 0 10px 0;
+}
+
+.param {
+  display: table-cell;
+  vertical-align: top;
+  padding: 5px 20px 5px 0;
+  font-size: $baseTextSize;
+  border-bottom-style: solid;
+  border-color: #cccccc;
+  border-width: 1px;
+}
+
+.param ul
+.param li {
+  list-style: square inside;
+}
+
+.name {
+  width: 15%;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.reqd {
+  width: 15%;
+}
+
+.desc {
+  width: 35%;
+}
+
+.data {
+  width: 20%;
+}
+
+.default {
+  width: 15%;
+}
+
+.head {
+  border-color: #b3b3b3; // TODO REMOVE OR CONFIRM
+  border-color: $regGray;
+  // border-width: 0;  // REMOVE IF I DON'T NEED
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  color: $regGray;
+  font-family: $normal-font-stack;
+  font-size: $opTextSize;
+  font-weight: 700;
+  padding: 0;
+}
+
+/*
+ * Response codes and descriptions
+ */
+
+.response-item {
+  display: table;
+  /*max-width: 600px;*/
+  padding: 0 10px 0;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.response {
+  display: table-cell;
+  vertical-align: top;
+  padding: 0 20px 5px 0;
+  font-size: 14px;
+}
+
+.opcode {
+  font-size: $opTextSize;
+  font-weight: 700;
+  padding-top: 4px;
+  width: 75px;
+  vertical-align: top;
+}
+.note {
+  padding-left: 20px;
+}
+
+/*
+ * Styling for impletemtation notes
+ */
+
+.impnote {
+  color: $regBlack;
+  padding-left: 20px;
+}
+
+.impnote-table {
+  display: table;
+  padding: 0 10px 0;
+  table-layout: fixed;
+  width: 100%
+}
+
+.impnote-item {
+  display: table-cell;
+  vertical-align: top;
+  padding: 0 20px 5px 0;
+  font-size: 14px;
+}
