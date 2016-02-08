@@ -1,0 +1,450 @@
+/* line 42, scss/apidoc.scss */
+html {
+  overflow-y: scroll; }
+
+/* line 46, scss/apidoc.scss */
+ul,
+li {
+  list-style: none;
+  padding-left: 0; }
+
+/* line 53, scss/apidoc.scss */
+table {
+  margin: 0 10px 0;
+  font-weight: 500; }
+
+/* line 59, scss/apidoc.scss */
+thead {
+  border-bottom-style: solid;
+  border-color: #d2d2d2;
+  border-bottom-width: 1px;
+  color: #787878;
+  font-size: 11px; }
+
+/* line 68, scss/apidoc.scss */
+tbody {
+  color: #333333;
+  font-size: 14px; }
+
+/* line 74, scss/apidoc.scss */
+td {
+  padding-top: 0;
+  padding-bottom: 4px; }
+
+/* line 80, scss/apidoc.scss */
+td:first-child {
+  padding-top: 4px; }
+
+/* line 85, scss/apidoc.scss */
+li.resource-item:not(:first-child) {
+  border-top-color: #d2d2d2;
+  border-top-style: solid;
+  border-top-width: 1px;
+  padding-top: 10px; }
+
+/* line 92, scss/apidoc.scss */
+.resource-heading {
+  color: #787878;
+  font-size: 16px;
+  font-weight: bold;
+  overflow: auto;
+  margin-bottom: 10px; }
+
+/* line 100, scss/apidoc.scss */
+.resource-heading a {
+  color: #333333; }
+
+/* line 104, scss/apidoc.scss */
+.resource-ctrls a {
+  font-size: 14px;
+  font-weight: normal; }
+
+/* line 109, scss/apidoc.scss */
+.endpoint-heading {
+  border-style: solid;
+  border-width: 1px;
+  border-color: inherit;
+  margin-bottom: 10px; }
+
+/* line 116, scss/apidoc.scss */
+.operator {
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: bold;
+  padding-top: 7px;
+  text-align: center;
+  width: 50px;
+  height: 30px; }
+
+/* line 127, scss/apidoc.scss */
+a:link.operator,
+a:visited.operator,
+a:hover.operator,
+a:active.operator {
+  text-decoration: none; }
+
+/* line 135, scss/apidoc.scss */
+.endpoint-path {
+  font-size: 14px;
+  padding-top: 5px;
+  margin-left: 10px; }
+
+/* line 141, scss/apidoc.scss */
+a.endpoint-path {
+  color: #333333; }
+
+/* line 145, scss/apidoc.scss */
+.endpoint-desc {
+  padding-top: 5px;
+  margin-right: 10px; }
+
+/* NOTE: .collapse does not like padding on the
+   animated div. Don't do it, or will look wonky */
+/* line 152, scss/apidoc.scss */
+.endpoint-content {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 10px;
+  margin-top: -11px; }
+
+/* line 160, scss/apidoc.scss */
+.endpoint-content h1 {
+  font-size: 14px;
+  margin-left: 10px; }
+
+/* line 165, scss/apidoc.scss */
+.endpoint-content h2 {
+  color: #787878;
+  font-size: 13px;
+  margin-left: 10px; }
+
+/*
+ * styling for the POST operator type
+ */
+/* line 176, scss/apidoc.scss */
+.post {
+  background-color: #e7f6ec;
+  border-color: #c3e8d1; }
+
+/* line 181, scss/apidoc.scss */
+.post .operator {
+  color: #fafafa;
+  background-color: #10a54a; }
+
+/* line 186, scss/apidoc.scss */
+.post .endpoint-desc {
+  color: #10a54a; }
+
+/* line 190, scss/apidoc.scss */
+.post .endpoint-content h1 {
+  color: #10a54a; }
+
+/*
+ * styling for the PUT operator type
+ */
+/* line 198, scss/apidoc.scss */
+.put {
+  background-color: #f9f2e9;
+  border-color: #f0e0ca; }
+
+/* line 203, scss/apidoc.scss */
+.put .operator {
+  color: #fafafa;
+  background-color: #c5862b; }
+
+/* line 208, scss/apidoc.scss */
+.put .endpoint-desc {
+  color: #c5862b; }
+
+/* line 212, scss/apidoc.scss */
+.put .endpoint-content h1 {
+  color: #c5862b; }
+
+/*
+ * styling for the GET operator type
+ */
+/* line 220, scss/apidoc.scss */
+.get {
+  background-color: #e7f0f7;
+  border-color: #c3d9ec; }
+
+/* line 225, scss/apidoc.scss */
+.get .operator {
+  color: #fafafa;
+  background-color: #0f6ab4; }
+
+/* line 230, scss/apidoc.scss */
+.get .endpoint-desc {
+  color: #0f6ab4; }
+
+/* line 234, scss/apidoc.scss */
+.get .endpoint-content h1 {
+  color: #0f6ab4; }
+
+/*
+ * styling for the DELETE operator type
+ */
+/* line 242, scss/apidoc.scss */
+.delete {
+  background-color: #f5e8e8;
+  border-color: #e8c6c7; }
+
+/* line 247, scss/apidoc.scss */
+.delete .operator {
+  color: #fafafa;
+  background-color: #a41e22; }
+
+/* line 252, scss/apidoc.scss */
+.delete .endpoint-desc {
+  color: #a41e22; }
+
+/* line 256, scss/apidoc.scss */
+.delete .endpoint-content h1 {
+  color: #a41e22; }
+
+/*
+ * These are the return lozenges
+ */
+/* line 265, scss/apidoc.scss */
+.return {
+  border-radius: 3px;
+  color: #e6e6e6;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding-top: 0;
+  text-align: center;
+  width: 75px;
+  height: 16px; }
+
+/*
+ * these are my lozenge classes
+ */
+/* line 281, scss/apidoc.scss */
+.ok {
+  background-color: #14892c;
+  border-radius: 3px;
+  color: #e6e6e6;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  height: 16px;
+  padding-top: 0;
+  text-align: center;
+  width: 75px; }
+
+/* line 294, scss/apidoc.scss */
+.err {
+  background-color: #d04437;
+  border-radius: 3px;
+  color: #e6e6e6;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  height: 16px;
+  padding-top: 0;
+  text-align: center;
+  width: 75px; }
+
+/* line 307, scss/apidoc.scss */
+.loznote {
+  background-color: #ffa800;
+  border-radius: 3px;
+  color: #333333;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  height: 16px;
+  padding-top: 0;
+  text-align: center;
+  width: 75px; }
+
+/*
+ * My JSON styling. Provides indentation,
+ * a background, and monospaced font stack. NOTE: the font
+ * stack is based on bootstrap.min.css:5. This could change
+ * so if re update the bootstrap... check this.
+ */
+/* line 328, scss/apidoc.scss */
+.json {
+  background-color: #fafafa;
+  border-width: 1px;
+  border-color: #d2d2d2;
+  border-style: solid;
+  display: inline-block;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px; }
+
+/* line 341, scss/apidoc.scss */
+.json div {
+  margin-left: 10px;
+  color: #333333;
+  font-size: 13px;
+  font-weight: 500;
+  background-color: inherit; }
+
+/*
+ * separate style for data models.
+ */
+/* line 352, scss/apidoc.scss */
+.json-model {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px; }
+
+/* line 358, scss/apidoc.scss */
+.json-model div {
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: 500; }
+
+/* line 364, scss/apidoc.scss */
+.json.example {
+  position: relative;
+  margin-top: 25px;
+  margin-left: 0; }
+
+/* line 370, scss/apidoc.scss */
+.json.example::before {
+  color: #333333;
+  content: "Example";
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  left: -0px;
+  position: absolute;
+  text-transform: uppercase;
+  top: -20px; }
+
+/* line 382, scss/apidoc.scss */
+.propName {
+  color: #333333;
+  font-weight: 700; }
+
+/* line 387, scss/apidoc.scss */
+.propType {
+  color: #5555aa;
+  font-weight: 500; }
+
+/* line 392, scss/apidoc.scss */
+.propOpt {
+  color: #333333;
+  font-style: italic; }
+
+/*
+ * styling for the parameter/argument lists
+ */
+/* line 401, scss/apidoc.scss */
+.param-item {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  padding: 0 10px 0; }
+
+/* line 408, scss/apidoc.scss */
+.param {
+  display: table-cell;
+  vertical-align: top;
+  padding: 5px 20px 5px 0;
+  font-size: 14px;
+  border-bottom-style: solid;
+  border-color: #cccccc;
+  border-width: 1px; }
+
+/* line 418, scss/apidoc.scss */
+.param ul,
+.param li {
+  list-style: square inside; }
+
+/* line 423, scss/apidoc.scss */
+.name {
+  width: 15%;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace; }
+
+/* line 428, scss/apidoc.scss */
+.reqd {
+  width: 15%; }
+
+/* line 432, scss/apidoc.scss */
+.desc {
+  width: 35%; }
+
+/* line 436, scss/apidoc.scss */
+.data {
+  width: 20%; }
+
+/* line 440, scss/apidoc.scss */
+.default {
+  width: 15%; }
+
+/* line 444, scss/apidoc.scss */
+.head {
+  border-color: #b3b3b3;
+  border-color: #787878;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  color: #787878;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 0; }
+
+/*
+ * Response codes and descriptions
+ */
+/* line 461, scss/apidoc.scss */
+.response-item {
+  display: table;
+  /*max-width: 600px;*/
+  padding: 0 10px 0;
+  table-layout: fixed;
+  width: 100%; }
+
+/* line 469, scss/apidoc.scss */
+.response {
+  display: table-cell;
+  vertical-align: top;
+  padding: 0 20px 5px 0;
+  font-size: 14px; }
+
+/* line 476, scss/apidoc.scss */
+.opcode {
+  font-size: 11px;
+  font-weight: 700;
+  padding-top: 4px;
+  width: 75px;
+  vertical-align: top; }
+
+/* line 483, scss/apidoc.scss */
+.note {
+  padding-left: 20px; }
+
+/*
+ * Styling for impletemtation notes
+ */
+/* line 491, scss/apidoc.scss */
+.impnote {
+  color: #333333;
+  padding-left: 20px; }
+
+/* line 496, scss/apidoc.scss */
+.impnote-table {
+  display: table;
+  padding: 0 10px 0;
+  table-layout: fixed;
+  width: 100%; }
+
+/* line 503, scss/apidoc.scss */
+.impnote-item {
+  display: table-cell;
+  vertical-align: top;
+  padding: 0 20px 5px 0;
+  font-size: 14px; }
+
+/*# sourceMappingURL=apidoc.css.map */

@@ -32,8 +32,10 @@ module.exports = function(grunt) {
           'Safari >= 6'
         ],*/
         browsers: ['last 5 versions', 'ie 8', 'ie 9', '> 1%'],
-        map: true
-
+        map: {
+          prev: 'src/assets/css'
+        },
+        diff: true,
       },
 
       dev: {
@@ -44,17 +46,18 @@ module.exports = function(grunt) {
       },
 
       prod: {
+        options: {
+          diff: false
+        },
         expand : true,
-        cwd    : 'public/assets/',
+        cwd    : 'prod/assets/',
         src    : ['css/**/*.css'],
-        dest   : 'public/assets/'
+        dest   : 'prod/assets/'
       }
     },
-
-
-// CLEAN ============================================================
+    // CLEAN ============================================================
     clean: {
-      src: 'public/**/*.*'
+      src: 'prod/**/*.*'
     },
 
 
@@ -116,14 +119,14 @@ module.exports = function(grunt) {
         options : {
           import : false
         },
-        src : ['public/assets/css/*.css']
+        src : ['prod/assets/css/*.css']
       },
 
       prod_lax: {
         options: {
           csslintrc : '.csslintrc'
         },
-        src: ['public/assets/css/*.css']
+        src: ['prod/assets/css/*.css']
       }
     },
 
@@ -141,16 +144,58 @@ module.exports = function(grunt) {
         //}
         files: [{
             expand: true,
-            cwd: 'public/'
+            cwd: 'prod/',
             src: ['**/*.css'],
-            dest: 'public/'
+            dest: 'prod/'
+        }]
+      },
+
+      dev: {
+        files: [{
+          expand: true,
+          cwd: 'src/',
+          src: ['**/*.css'],
+          dest: 'src/'
         }]
       }
     },
 
 
+// EXPRESS SERVER ===================================================
+    express: {
+      dev: {
+        options: {
+          port: 3000,
+          hostname: 'localhost',
+          bases:['./src'],
+          livereload: true
+
+        }
+      },
+      prod: {
+        options: {
+          port: 3000,
+          hostname: 'localhost',
+          bases:['./prod'],
+          livereload:true
+        }
+      }
+    },
+
+
 // HTMLLINT =========================================================
-      // TODO: https://github.com/htmllint/grunt-htmllint //////////////
+//          TODO: Consider https://www.npmjs.com/package/grunt-html-validation
+//                at later time to ensure W3C compliance. For now, KISS.
+//          NOTE: Ruleset is https://github.com/yaniswang/HTMLHint/wiki/Rules
+    htmlhint: {
+      options: {
+          htmlhintrc: '../buildcfg/.htmlhintrc',
+          force: false
+      },
+      all: {
+        src: ['src/**/*.html']
+      }
+    },
 
 
 
@@ -166,7 +211,7 @@ module.exports = function(grunt) {
             expand: true,
             cwd: 'src/',
             src: ['**/*.html'],
-            dest: 'public/'
+            dest: 'prod/'
         }]
       },
 
@@ -190,9 +235,9 @@ module.exports = function(grunt) {
 
         files: [{
             expand: true,
-            cwd: 'src/assets/img/',
+            cwd: 'src/',
             src: ['**/*.{png,jpg,gif}'],
-            dest: 'public/assets/img/'
+            dest: 'prod/'
         }]
       }
     },
@@ -237,19 +282,16 @@ module.exports = function(grunt) {
 
 
 // OPEN =============================================================
-    open: {
-      dev: {
-        server: {
-          path: 'http://localhost/budgetappdevelopers/dev',
-          //app: 'Google Chrome'
-        }
-      },
-      prod: {
-        server: {
-          path: 'http://localhost/budgetappdevelopers/public'
-        }
-      }
+ open: {
+    dev: {
+        path: 'http://localhost:3000/index.html',
+        app: 'C:/Program Files (x86)/Firefox Developer Edition/firefox.exe'
     },
+    prod: {
+        path: 'http://localhost:3000/index.html',
+        app: 'C:/Program Files (x86)/Firefox Developer Edition/firefox.exe'
+    }
+},
 
 
 // SASS =============================================================
@@ -270,17 +312,31 @@ module.exports = function(grunt) {
           dest: 'src/assets/css',
           ext: '.css'
         }]
-
+      },
+      prod: {
+        options: {
+            sourcemap: "none"
+        },
+        files: [{
+          expand: true,
+          cwd: 'src/assets/css/scss',
+          src: ['*.scss'],
+          dest: 'prod/assets/css',
+          ext: '.css'
+        }]
       }
     },
 
 
-// SASSLINT =========================================================
-   sasslint: {
+// SCSSLINT =========================================================
+   scsslint : {
+        all: [
+          'src/**/*.scss'
+        ],
         options: {
-            configFile: 'config/.sass-lint.yml',
-        },
-        target: ['src/assets/css/scss/*.scss']
+          colorizeOutput: true,
+          force: true
+        }
     },
 
 
@@ -301,7 +357,9 @@ module.exports = function(grunt) {
     uglify: {
       options: {
         banner: '/*\n <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> \n*/\n',
-        mangle: true
+        mangle: true,
+        mangleProperties: true,
+        preserveComments: false,
       },
 
       prod: { // in-house files
@@ -310,8 +368,17 @@ module.exports = function(grunt) {
           //'dist/js/magic.min.js':'src/js/magic.js',
           //'dist/js/test.js':'src/js/test.js'
           //'dist/js/budgetapp.min.js': ['src/js/magic.js','src/js/test.js']
-          'public/app/core.js' : ['src/**/*.js','!src/assets/lib/**/*.js']
+          'prod/assets/core.js' : ['src/**/*.js','!src/assets/lib/**/*.js']
         }
+      },
+
+      prod: {
+        files: [{
+          expand: true,
+          cwd: 'src/',
+          src: ['**/*.js','!assets/js/lib/**/*.js'],
+          dest: 'prod/'
+        }]
       },
 
       libraries: { // libraries
@@ -319,7 +386,7 @@ module.exports = function(grunt) {
           expand  : true,                // allow dynamic build
           cwd     : 'src/assets/lib',    // curernt working dir
           src     : '**/*.js',           // source files
-          dest    : 'public/assets/lib', // destination
+          dest    : 'prod/assets/lib', // destination
           ext     : '.min.js',           // replace .js to .min.js
           extDot  : 'last'               // use the last dot to append to.
         }],
@@ -329,14 +396,25 @@ module.exports = function(grunt) {
 
 // WATCH ============================================================
     watch: {
+      options: {
+        livereload: true,
+      },
       scripts: {
         files: 'src/**/*.js',
         tasks: ['jshint']
       },
       sass: {
+        options: {
+          livereload: true
+        },
         files: ['src/**/*.scss'],
-        tasks: ['sass']
+        tasks: ['scsslint','sass']
+      },
+      html: {
+        files: ['src/**/*.html'],
+        tasks: ['htmlhint']
       }
+
     } //<---<
 
   });
@@ -344,12 +422,16 @@ module.exports = function(grunt) {
   // https://24ways.org/2013/grunt-is-not-weird-and-hard/
 
   // create the tasks
-  grunt.registerTask('dev',['sasslint','sass','csslint:dev_lax', 'autoprefixer:dev','jshint:dev','watch','open:dev']);
-  grunt.registerTask('prod',['clean','sasslint','sass','csslint:prod_lax','autoprefixer:prod','cssmin','jshint:prod','uglify','imagemin','open:prod'])
-  grunt.registerTask('buildapi',['sass','watch'])
-  grunt.registerTask('default',['jshint','uglify','less','cssmin']);
-  grunt.registerTask('uglyonly',['uglify']);
-  grunt.registerTask('production',['jshint','uglify','less','cssmin:production']);
+  grunt.registerTask('dev-server-start',['express:dev','open:dev','watch']);
+  grunt.registerTask('dev-build',['scsslint','sass','csslint:dev_lax','autoprefixer:dev','jshint:dev','htmllint']);
+  grunt.registerTask('prod-server-start',['express:prod','open:prod','watch']);
+  grunt.registerTask('prod-build',['clean','scsslint','sass:prod','csslint:prod_lax','autoprefixer:prod','cssmin:prod','jshint:prod','uglify:prod','htmlhint','htmlmin:prod','imagemin']);
+  //unt.registerTask('dev',['scsslint','sass','csslint:dev_lax', 'autoprefixer:dev','jshint:dev','htmllint','watch','open:dev']);
+
+  //grunt.registerTask('buildapi',['sass','watch']);
+  //grunt.registerTask('default',['jshint','uglify','less','cssmin']);
+  //grunt.registerTask('uglyonly',['uglify']);
+  //grunt.registerTask('production',['jshint','uglify','less','cssmin:production']);
 
   //load grunt plugins
   /* depricated: now using load-grunt-tasks plugin
