@@ -8,15 +8,15 @@
     "email": "info@davemccauley.net",
     "url": "http://www.davemccauley.net/"
   },
-  "homepage": "http://www.davemccauley.net",
+  "homepage": "https://github.com/DaveMcCauley/BudgetAppAPI",
   "private": "true",
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DaveMcCauley/budgetapp"
+    "url": "https://github.com/DaveMcCauley/BudgetAppAPI"
   },
   "bugs": {
-    "url": "https://github.com/DaveMcCauley/budgetapp/issues"
+    "url": "https://github.com/DaveMcCauley/budgetappapi/issues"
   },
   "devDependencies": {
     "grunt": "0.x.x",

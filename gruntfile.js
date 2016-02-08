@@ -390,7 +390,7 @@ module.exports = function(grunt) {
           expand  : true,                // allow dynamic build
           cwd     : 'src/assets/lib',    // curernt working dir
           src     : '**/*.js',           // source files
-          dest    : 'prod/assets/lib', // destination
+          dest    : 'prod/assets/lib', 	 // destination
           ext     : '.min.js',           // replace .js to .min.js
           extDot  : 'last'               // use the last dot to append to.
         }],
@@ -423,36 +423,15 @@ module.exports = function(grunt) {
 
   });
 
-  // https://24ways.org/2013/grunt-is-not-weird-and-hard/
+  
 
   // create the tasks
-  grunt.registerTask('dev-start-server',['express:dev','open:dev','watch']);
+  grunt.registerTask('dev-start-win',['express:dev','open:dev','watch']);
   grunt.registerTask('dev-start-mac',['express:dev','open:mac','watch']);
   grunt.registerTask('dev-build',['scsslint','sass','csslint:dev_lax','autoprefixer:dev','jshint:dev','htmlhint']);
-  grunt.registerTask('prod-start-server',['express:prod','open:prod','watch']);
-  grunt.registerTask('prod-build',['clean','scsslint','sass:prod','csslint:prod_lax','autoprefixer:prod','cssmin:prod','jshint:prod','uglify:prod','htmlhint','htmlmin:prod','imagemin']);
-  //unt.registerTask('dev',['scsslint','sass','csslint:dev_lax', 'autoprefixer:dev','jshint:dev','htmllint','watch','open:dev']);
-
-  //grunt.registerTask('buildapi',['sass','watch']);
-  //grunt.registerTask('default',['jshint','uglify','less','cssmin']);
-  //grunt.registerTask('uglyonly',['uglify']);
-  //grunt.registerTask('production',['jshint','uglify','less','cssmin:production']);
-
-  //load grunt plugins
-  /* depricated: now using load-grunt-tasks plugin
-  /*grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-csslint');
-  grunt.loadNpmTasks('grunt-autoprefixer');
-  grunt.loadNpmTasks('grunt-open');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
-  grunt.loadNpmTasks('grunt-contrib-htmlmin');*/
+  grunt.registerTask('prod-start-win',['express:prod','open:prod','watch']);
+	grunt.registerTask('prod-start-mac',['express:prod','open:mac','watch']);
+  grunt.registerTask('prod-build',['clean','scsslint','sass:prod','csslint:prod_lax','autoprefixer:prod','cssmin:prod','jshint:prod','uglify:prod','htmlhint','htmlmin:prod','imagemin']);  
 
 
 };
