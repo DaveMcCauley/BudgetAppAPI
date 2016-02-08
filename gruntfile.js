@@ -290,6 +290,10 @@ module.exports = function(grunt) {
     prod: {
         path: 'http://localhost:3000/index.html',
         app: 'C:/Program Files (x86)/Firefox Developer Edition/firefox.exe'
+    },
+    mac: {
+        path: 'http://localhost:3000/index.html',
+        app: 'FirefoxDeveloperEdition'
     }
 },
 
@@ -422,9 +426,10 @@ module.exports = function(grunt) {
   // https://24ways.org/2013/grunt-is-not-weird-and-hard/
 
   // create the tasks
-  grunt.registerTask('dev-server-start',['express:dev','open:dev','watch']);
-  grunt.registerTask('dev-build',['scsslint','sass','csslint:dev_lax','autoprefixer:dev','jshint:dev','htmllint']);
-  grunt.registerTask('prod-server-start',['express:prod','open:prod','watch']);
+  grunt.registerTask('dev-start-server',['express:dev','open:dev','watch']);
+  grunt.registerTask('dev-start-mac',['express:dev','open:mac','watch']);
+  grunt.registerTask('dev-build',['scsslint','sass','csslint:dev_lax','autoprefixer:dev','jshint:dev','htmlhint']);
+  grunt.registerTask('prod-start-server',['express:prod','open:prod','watch']);
   grunt.registerTask('prod-build',['clean','scsslint','sass:prod','csslint:prod_lax','autoprefixer:prod','cssmin:prod','jshint:prod','uglify:prod','htmlhint','htmlmin:prod','imagemin']);
   //unt.registerTask('dev',['scsslint','sass','csslint:dev_lax', 'autoprefixer:dev','jshint:dev','htmllint','watch','open:dev']);
 
