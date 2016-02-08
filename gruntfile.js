@@ -183,13 +183,13 @@ module.exports = function(grunt) {
     },
 
 
-// HTMLLINT =========================================================
+// HTMLHINT =========================================================
 //          TODO: Consider https://www.npmjs.com/package/grunt-html-validation
 //                at later time to ensure W3C compliance. For now, KISS.
 //          NOTE: Ruleset is https://github.com/yaniswang/HTMLHint/wiki/Rules
     htmlhint: {
       options: {
-          htmlhintrc: '../buildcfg/.htmlhintrc',
+          htmlhintrc: '.htmlhintrc',
           force: false
       },
       all: {
@@ -362,7 +362,7 @@ module.exports = function(grunt) {
         preserveComments: false,
       },
 
-      prod: { // in-house files
+      concsamp: { // in-house files
         files: {
           //TODO: assign wildcards?
           //'dist/js/magic.min.js':'src/js/magic.js',
@@ -423,7 +423,7 @@ module.exports = function(grunt) {
 
   // create the tasks
   grunt.registerTask('dev-server-start',['express:dev','open:dev','watch']);
-  grunt.registerTask('dev-build',['scsslint','sass','csslint:dev_lax','autoprefixer:dev','jshint:dev','htmllint']);
+  grunt.registerTask('dev-build',['scsslint','sass','csslint:dev_lax','autoprefixer:dev','jshint:dev','htmlhint']);
   grunt.registerTask('prod-server-start',['express:prod','open:prod','watch']);
   grunt.registerTask('prod-build',['clean','scsslint','sass:prod','csslint:prod_lax','autoprefixer:prod','cssmin:prod','jshint:prod','uglify:prod','htmlhint','htmlmin:prod','imagemin']);
   //unt.registerTask('dev',['scsslint','sass','csslint:dev_lax', 'autoprefixer:dev','jshint:dev','htmllint','watch','open:dev']);
