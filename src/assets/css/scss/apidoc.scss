@@ -106,6 +106,17 @@ li.resource-item:not(:first-child) {
   font-weight: normal;
 }
 
+.listops {
+	display: inline-block;
+	text-align: center;
+	width: 8.1em;
+}
+
+.expandops {
+	display: inline-block;
+	text-align: center;
+	width: 6em;
+}
 .endpoint-heading {
   border-style: solid;
   border-width: $borderWidth;

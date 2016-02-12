@@ -25,14 +25,11 @@
   				</a>
           <span>: Budget Operations</span>
           <div class="resource-ctrls pull-right">
-            <a href="#budget_endpoint_list" data-toggle="collapse">
-              Show/Hide
-            </a>&nbsp|&nbsp
             <a href="#budget_endpoint_list" class="listops">
-              List Operations
+              Show Operations
             </a>&nbsp|&nbsp
             <a href="#budget_endpoint_list" class="expandops">
-              Expand Operations
+              Show Details
             </a>
           </div>
   			</div>
@@ -1356,14 +1353,11 @@
   				</a>
           <span>: User Management</span>
           <div class="resource-ctrls pull-right">
-            <a href="#user_endpoint_list" data-toggle="collapse">
-              Show/Hide
-            </a>&nbsp|&nbsp
             <a href="#user_endpoint_list" class="listops">
-              List Operations
+              Show Operations
             </a>&nbsp|&nbsp
             <a href="#user_endpoint_list" class="expandops">
-              Expand Operations
+              Show Details
             </a>
           </div>
   			</div>
@@ -1430,14 +1424,11 @@
           </a>
           <span>: Budget Operations</span>
           <div class="resource-ctrls pull-right">
-            <a href="#cost_endpoint_list" data-toggle="collapse">
-              Show/Hide
-            </a>&nbsp|&nbsp
             <a href="#cost_endpoint_list" class="listops">
-              List Operations
+              Show Operations
             </a>&nbsp|&nbsp
             <a href="#cost_endpoint_list" class="expandops">
-              Expand Operations
+              Show Details
             </a>
           </div>
         </div>
@@ -1504,27 +1495,73 @@
 
 <!-- TODO: MOVE TO EXTERNAL FILE? -->
 <script>
+
 $('.listops').click(function(event) {
   event.preventDefault();
+	if($(this).html().trim() == "Show Operations") {
+		$(this).html('Hide Operations');
+	} else {
+		$(this).html("Show Operations");
+	}
+	$(this).next('.expandops').html("Show Details");
   $(this).parents('.resource-heading')
     .next('.endpoint-list')
-    .collapse('show')
+    .collapse('toggle')
     .find('.endpoint-content')
     .collapse('hide');
+		
 });
 $('.expandops').click(function(event) {
   event.preventDefault();
-  $(this).parents('.resource-heading')
+	if($(this).html().trim()=="Show Details") {
+		$(this).html("Hide Details");
+		$(this).parents('.resource-heading')
     .next('.endpoint-list')
     .collapse('show')
     .find('.endpoint-content')
     .collapse('show');
+		
+	} 
+	else {		
+		$(this).html("Show Details");
+		if($(this).prev('.listops').html().trim()=="Show Operations") {
+			$(this).parents('.resource-heading')
+			.next('.endpoint-list')
+			.collapse('show')
+			.find('.endpoint-content')
+			.collapse('hide');
+		} 
+		else {
+			$(this).parents('.resource-heading')
+			.next('.endpoint-list')
+			.collapse('hide')
+			.find('.endpoint-content')
+			.collapse('hide');
+		}
+	}
 });
+
 $('.expcontent').click(function(event) {
-  event.preventDefault();
+  event.preventDefault();	
   $(this).parents('.endpoint')
-  .find('.ednpoint-content')
+  .find('.endpoint-content')
   .collapse('toggle');
-})
+});
+
+// TODO: This is for debugging, easier if we don't
+// have to expand the content every time we reload
+// especially when using watch+autoload!
+// also note that this cheat wrecks havoc with the 
+// show/hide labels as it overrrides the initial 
+// states. The first two lines of the function 
+// attempt to reconcile this. But always test 
+// WITHOUT this function.
+$(document).ready(function() {
+	$('.expandops').html("Hide Details");
+	$('.listops').html("Hide Operations");
+	$('.endpoint-list').collapse('show');
+	$('.endpoint-content').collapse('show');
+});
+
 </script>
 </html>
