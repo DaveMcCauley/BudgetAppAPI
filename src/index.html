@@ -857,11 +857,11 @@
 
           <li class="get endpoint"><!-- budgets/GET/{id}/fields/{fiedl} -->
             <div class="endpoint-heading">
-              <a href="#budget_get2_content" data-parent="budget_endpoint_list" data-toggle="collapse" class="expcontent operator">GET</a>
-              <a href="#budget_get2_content" data-toggle="collapse" class="expcontent endpoint-path">/budgets/{id}/fields/{field}</a>
-              <a href="#budget_get2_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">find a budget field</a>
+              <a href="#budget_get_field_content" data-parent="budget_endpoint_list" data-toggle="collapse" class="expcontent operator">GET</a>
+              <a href="#budget_get_field_content" data-toggle="collapse" class="expcontent endpoint-path">/budgets/{id}/fields/{field}</a>
+              <a href="#budget_get_field_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">find a budget field</a>
             </div>
-            <div id="budget_get2_content" class="endpoint-content collapse">
+            <div id="budget_get_field_content" class="endpoint-content collapse">
               <h1>Arguments</h1>
               <div class="param-item">
                 <div class="param name head">Name</div>
@@ -912,16 +912,16 @@
 							</div>
 							<div class="response-item">
 								<div class="response opcode"><div class= "err">STATUS 404</div></div>
-								<div class="response note">REturned if the user is not authenticated, or the budget {id} 
+								<div class="response note">REturned if the user is not authenticated, or the budget {id}
 									is not valid.
 								</div>
 							</div>
             </div>
           </li> <!-- budget/{id}/fields{field} -->
-					
-					
-					
-					
+
+
+
+
 					<li class="get endpoint"><!-- budgets/GET/{id}/memebers/ -->
             <div class="endpoint-heading">
               <a href="#budget_id_member_content" data-parent="budget_endpoint_list" data-toggle="collapse" class="expcontent operator">GET</a>
@@ -948,6 +948,7 @@
 									<ul>
 										<li>admins</li>
 										<li>all</li>
+                    <li>me</li>
 										<li>none</li>
 										<li>normal</li>
 										<li>owners</li>
@@ -955,7 +956,7 @@
                 </div>
                 <div class="param default">all</div>
               </div>
-							
+
 							<div class="param-item">
                 <div class="param name">fields</div>
                 <div class="param reqd">optional</div>
@@ -979,7 +980,7 @@
                 </div>
                 <div class="param default">all</div>
               </div>
-							
+
 							<div class="param-item">
                 <div class="param name">actions</div>
                 <div class="param reqd">optional</div>
@@ -1026,16 +1027,233 @@
 							</div>
 							<div class="response-item">
 								<div class="response opcode"><div class= "err">STATUS 404</div></div>
-								<div class="response note">REturned if the user is not authenticated, or the budget {id} 
+								<div class="response note">REturned if the user is not authenticated, or the budget {id}
 									is not valid.
 								</div>
 							</div>
             </div>
           </li> <!-- budget/{id}/fields{field} -->
-					
-					
-					
-					
+
+
+
+
+          <li class="get endpoint"><!-- budgets/GET/{id}/membersInvited/ -->
+            <div class="endpoint-heading">
+              <a href="#budget_id_member_invited_content" data-parent="budget_endpoint_list" data-toggle="collapse" class="expcontent operator">GET</a>
+              <a href="#budget_id_member_invited_content" data-toggle="collapse" class="expcontent endpoint-path">/budgets/{id}/membersInvited/</a>
+              <a href="#budget_id_member_invited_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">invited members of a budget</a>
+            </div>
+            <div id="budget_id_member_invited_content" class="endpoint-content collapse">
+              <h1>Arguments</h1>
+              <div class="param-item">
+                <div class="param name head">Name</div>
+                <div class="param reqd head">Req'd?</div>
+                <div class="param desc head">Description</div>
+                <div class="param data head">Valid Values</div>
+                <div class="param default head">Default Value</div>
+              </div>
+              <div class="param-item">
+                <div class="param name">fields</div>
+                <div class="param reqd">optional</div>
+                <div class="param desc">
+                  filters the return result based on member type
+                </div>
+                <div class="param data">
+                  all or a comma-separated list of:
+                  <ul>
+                    <li>avatar</li>
+                    <li>bio</li>
+                    <li>confirmed</li>
+                    <li>email</li>
+                    <li>fullName</li>
+                    <li>initials</li>
+                    <li>memberType</li>
+                    <li>status</li>
+                    <li>url</li>
+                    <li>username</li>
+                  </ul>
+                </div>
+                <div class="param default">all</div>
+              </div>
+
+              <h1>Responses</h1>
+              <div class="response-item">
+                <div class="response opcode"><div class= "ok">STATUS 201</div></div>
+                <div class="response note">Returned if the update was successful.<br />
+                  <div class="json example">
+                    <div>[{
+                      <div>"id": "4ee7df1be582acdec80000ae",</div>
+                      <div>"fullName": "Bob Tester",</div>
+                      <div>"username": "bobtester"</div>
+                      <div>}, {</div>
+                      <div>"id": "4ee7df74e582acdec80000b6",</div>
+                      <div>"fullName": "David Tester",</div>
+                      <div>"username": "davidtester"</div>
+                      <div>}, {</div>
+                      <div>"id": "4ee7deffe582acdec80000ac",</div>
+                      <div>"fullName": "Joe Tester",</div>
+                      <div>"username": "joetester"</div>
+                    }]</div>
+                  </div>
+                </div>
+              </div>
+              <div class="response-item">
+                <div class= "response opcode"><div class= "err">STATUS 400</div></div>
+                <div class= "response note">Returned if any supplied argument are not valid.</div>
+              </div>
+              <div class="response-item">
+                <div class="response opcode"><div class= "err">STATUS 401</div></div>
+                <div class="respose note">Returned if the user is authenticated, but lacks requried read
+                  permission to view the requested fields.
+                </div>
+              </div>
+              <div class="response-item">
+                <div class="response opcode"><div class= "err">STATUS 404</div></div>
+                <div class="response note">REturned if the user is not authenticated, or the budget {id}
+                  is not valid.
+                </div>
+              </div>
+            </div>
+          </li> <!-- budget/{id}/invitedMembers/ -->
+
+
+
+
+          <li class="get endpoint"><!-- budgets/GET/{id}/myPrefs/ -->
+            <div class="endpoint-heading">
+              <a href="#budget_id_myprefs_content" data-parent="budget_endpoint_list" data-toggle="collapse" class="expcontent operator">GET</a>
+              <a href="#budget_id_myprefs_invited_content" data-toggle="collapse" class="expcontent endpoint-path">/budgets/{id}/prefs/</a>
+              <a href="#budget_id_myprefs_invited_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">preferences set on a budget</a>
+            </div>
+            <div id="budget_id_myprefs_invited_content" class="endpoint-content collapse">
+              <h1>Arguments</h1>
+              None
+              <h1>Responses</h1>
+              <div class="response-item">
+                <div class="response opcode"><div class= "ok">STATUS 201</div></div>
+                <div class="response note"><i>application/json</i> Returns the full budget data model if the user has permissions and the
+                  supplied {id} is found .
+                  <div class="json example">
+                    <div>[
+                      <div>{
+                        <div>"permissionLevel": "private",</div>
+                        <div>"requests": "disabled",</div>
+                        <div>"invitations": "members",</div>
+                        <div>"avatar": "#0070BF",</div>
+                        <div>"canInvite": true,</div>
+                      } </div>
+                    ], </div>
+                  </div>
+                </div>
+              </div>
+              <div class="response-item">
+                <div class="response opcode"><div class= "err">STATUS 401</div></div>
+                <div class="respose note">Returned if the user is authenticated, but lacks requried read
+                  permission to view the requested fields.
+                </div>
+              </div>
+              <div class="response-item">
+                <div class="response opcode"><div class= "err">STATUS 404</div></div>
+                <div class="response note">REturned if the user is not authenticated, or the budget {id}
+                  is not valid.
+                </div>
+              </div>
+            </div>
+          </li> <!-- budgets/GET/{id}/myPrefs/ -->
+
+
+
+
+          <li class="get endpoint"><!-- budgets/GET/{id}/organizations/ -->
+            <div class="endpoint-heading">
+              <a href="#budget_id_org_content" data-parent="budget_endpoint_list" data-toggle="collapse" class="expcontent operator">GET</a>
+              <a href="#budget_id_org_content" data-toggle="collapse" class="expcontent endpoint-path">/budgets/{id}/organzation/</a>
+              <a href="#budget_id_org_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">info on budget's organization</a>
+            </div>
+            <div id="budget_id_org_content" class="endpoint-content collapse">
+              <h1>Arguments</h1>
+              <div class="param-item">
+                <div class="param name head">Name</div>
+                <div class="param reqd head">Req'd?</div>
+                <div class="param desc head">Description</div>
+                <div class="param data head">Valid Values</div>
+                <div class="param default head">Default Value</div>
+              </div>
+              <div class="param-item">
+                <div class="param name">fields</div>
+                <div class="param reqd">optional</div>
+                <div class="param desc">
+                  filters the return result based on member type
+                </div>
+                <div class="param data">
+                  all or a comma-separated list of:
+                  <ul>
+                    <li>memberCount</li>
+                    <li>desc</li>
+                    <li>displayName</li>
+                    <li>idBoards</li>
+                    <li>invitations</li>
+                    <li>invited</li>
+                    <li>logoHash</li>
+                    <li>memberships</li>
+                    <li>name</li>
+                    <li>products</li>
+                    <li>url</li>
+                    <li>website</li>
+                  </ul>
+                </div>
+                <div class="param default">all</div>
+              </div>
+
+              <h1>Responses</h1>
+              <div class="response-item">
+                <div class="response opcode"><div class= "ok">STATUS 201</div></div>
+                <div class="response note">Returned if the update was successful.<br />
+                  <div class="json example">
+                    <div>[{
+                      <div>"memberCount": 5,</div>
+                      <div>"desc": "Tester Corporation's Budgeting Tool",</div>
+                      <div>"displayName": "Tester Corp TM"</div>
+                      <div>"idBoards": [
+                        <div>{
+                          <div>"id": 4ee7df74e582acdec80000b6",</div>
+                          <div>"id": 45c45da5454f455df54f55ff"</div>
+                        </div>}
+                      </div>]
+                      <div>"invitations": [{</div>
+                      <div>"}]"</div>
+                      <div>"invited": [{</div>
+                      <div>}]</div>
+                      <div>"logoHash": "4ee7deffe582acdec80000ac",</div>
+                      <div>"name": "Tester Corporation Inc.",</div>
+                      <div>"url": "http://budgetapp.com/o/Tester-coroporation-inc",</div>
+                      <div>"website": "www.testercorp.com"
+                    }]</div>
+                  </div>
+                </div>
+              </div>
+              <div class="response-item">
+                <div class= "response opcode"><div class= "err">STATUS 400</div></div>
+                <div class= "response note">Returned if any supplied arguments are not valid.</div>
+              </div>
+              <div class="response-item">
+                <div class="response opcode"><div class= "err">STATUS 401</div></div>
+                <div class="respose note">Returned if the user is authenticated, but lacks requried read
+                  permission to view the requested fields.
+                </div>
+              </div>
+              <div class="response-item">
+                <div class="response opcode"><div class= "err">STATUS 404</div></div>
+                <div class="response note">REturned if the user is not authenticated, or the budget {id}
+                  is not valid.
+                </div>
+              </div>
+            </div>
+          </li> <!-- budgets/{id}/organizations/ -->
+
+
+
+
           <li class="delete endpoint"><!-- budget/DELETE/{id} -->
             <div class="endpoint-heading">
               <a href="#budget_delete_content" data-parent="budget_endpoint_list" data-toggle="collapse" class="expcontent operator">DELETE</a>
@@ -1043,11 +1261,93 @@
               <a href="#budget_delete_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">delete a budget</a>
             </div>
             <div id="budget_delete_content" class="endpoint-content collapse">
-              Budget DELETE content, blah, blah, blah
+             <h1>Implementation</h1>
+              <div class= "impnote-table">
+                <div class="impnote-item opcode"><div class="loznote">CAUTION</div></div>
+                <div class="impnote">This endpoint permanently deletes the budget from the storage facility. The deletion
+                  is permanent, and unrecoverable. There is no undo. Generally, your implementation should close a
+                  budget, rather than deleting it.
+                </div>
+              </div>
+
+              <h1>Responses</h1>
+              <div class="response-item">
+                <div class= "response opcode"><div class= "ok">STATUS 200</div></div>
+                <div class= "response note">
+                  The budget was deleted.
+                </div>
+              </div>
+              <div class="response-item">
+                <div class= "response opcode"><div class= "err">STATUS 401</div></div>
+                <div class= "response note">
+                  Returned if the user is authenticated, but lacks the permission to view the
+                  requested budget.
+                </div>
+              </div>
+              <div class="response-item">
+                <div class= "response opcode"><div class= "err">STATUS 404</div></div>
+                <div class= "response note">
+                  Returned if the user is not authenticated, or the supplied {id} does not exist.
+                </div>
+              </div>
             </div>
-          </li>
+          </li><!-- budget/DELETE/{id} -->
+
+
+
+          <li class="delete endpoint"><!-- budget/DELETE/{id}/members -->
+            <div class="endpoint-heading">
+              <a href="#budget_delete_member_content" data-parent="budget_endpoint_list" data-toggle="collapse" class="expcontent operator">DELETE</a>
+              <a href="#budget_delete_member_content" data-toggle="collapse" data-toggle="collapse" class="expcontent endpoint-path">/budget/delete/{id}/members</a>
+              <a href="#budget_delete_member_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">delete a budget</a>
+            </div>
+            <div id="budget_delete_member_content" class="endpoint-content collapse">
+              <h1>Arguments</h1>
+              <div class="param-item">
+                <div class="param name head">Name</div>
+                <div class="param reqd head">Req'd?</div>
+                <div class="param desc head">Description</div>
+                <div class="param data head">Valid Values</div>
+                <div class="param default head">Default Value</div>
+              </div>
+              <div class="param-item">
+                <div class="param name">idMember</div>
+                <div class="param reqd">required</div>
+                <div class="param desc">
+                  id of member to remove from teh budget.
+                </div>
+                <div class="param data">
+                  Valid user id
+                </div>
+                <div class="param default">none</div>
+              </div>
+
+              <h1>Responses</h1>
+              <div class="response-item">
+                <div class="response opcode"><div class= "ok">STATUS 200</div></div>
+                <div class="response note">The user was removed successfully.</div>
+              </div>
+              <div class="response-item">
+                <div class="response opcode"><div class= "err">STATUS 401</div></div>
+                <div class="respose note">Returned if the user is authenticated, but lacks requried read
+                  permission to view the requested fields.
+                </div>
+              </div>
+              <div class="response-item">
+                <div class="response opcode"><div class= "err">STATUS 404</div></div>
+                <div class="response note">REturned if the user is not authenticated, or the budget {id}
+                  is not valid.
+                </div>
+              </div>
+            </div>
+          </li> <!-- budget/DELETE/{id}/members -->
+
   			</ul><!-- end budget endpoint list -->
+
   		</li>
+
+
+
   		<li id="resource_user" class="resource-item">
   			<!-- USER resource -->
         <div class="resource-heading">
