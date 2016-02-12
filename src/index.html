@@ -1521,11 +1521,14 @@
 
 $('.resource-heading-link').click(function(event){
 	
-	if($(this).hasClass("collapsed")) {
-		$(this).parent().find('.listops').html("Hide Operations");
+	console.log(".resource-heading-link");
+	console.log($(this).parents().next('.endpoint-list').hasClass("in"));
+	
+	if($(this).parents().next('.endpoint-list').hasClass("in")) {
+		$(this).parent().find('.listops').html("Show Operations");
 	}
 	else {
-		$(this).parent().find('.listops').html("Show Operations");
+		$(this).parent().find('.listops').html("Hide Operations");
 	}
 	
 })
@@ -1536,11 +1539,18 @@ $('.resource-heading-link').click(function(event){
 
 $('.listops').click(function(event) {
   event.preventDefault();
-	if($(this).html().trim() == "Show Operations") {
-		$(this).html('Hide Operations');
-	} else {
+	
+	console.log(".listops");
+	console.log($(this).parents().next('.endpoint-list').hasClass("in"));
+	
+	if($(this).parents().next('.endpoint-list').hasClass("in")) {
 		$(this).html("Show Operations");
 	}
+	else
+	{
+		$(this).html("Hide Operations");
+	}
+	
 	$(this).next('.expandops').html("Show Details");
   $(this).parents('.resource-heading')
     .next('.endpoint-list')
@@ -1554,6 +1564,22 @@ $('.listops').click(function(event) {
 //       the controller's state label.
 $('.expandops').click(function(event) {
   event.preventDefault();
+	
+	console.log(".expandops");
+	console.log($(this).parents().next('.endpoint-list').hasClass("in"));
+	
+	if($(this).parents().next('endpoint-list').hasClass("in")) {
+		$(this).prev('.listops').html("Show Operations");
+	}
+	else {
+		$(this).prev('.listops').html("Hide Operations");
+	}
+	
+	
+	
+	
+	
+	
 	if($(this).html().trim()=="Show Details") {
 		$(this).html("Hide Details");
 		$(this).parents('.resource-heading')
