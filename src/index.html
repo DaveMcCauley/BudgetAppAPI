@@ -20,7 +20,7 @@
   		<li id="resource_budget" class="resource-item">
         <!-- budget resource heading -->
   			<div class="resource-heading">
-  				<a href="#budget_endpoint_list" data-toggle="collapse">
+  				<a href="#budget_endpoint_list" class="resource-heading-link" data-toggle="collapse">
   					budgets
   				</a>
           <span>: Budget Operations</span>
@@ -1345,81 +1345,104 @@
 
 
 
-  		<li id="resource_user" class="resource-item">
-  			<!-- USER resource -->
+  		<li id="resource_member" class="resource-item">
+  			<!-- MEMBER resource -->
         <div class="resource-heading">
-  				<a href="#user_endpoint_list" data-toggle="collapse">
+  				<a href="#member_endpoint_list" class="resource-heading-link" data-toggle="collapse">
   					user
   				</a>
-          <span>: User Management</span>
+          <span>: Member Management</span>
           <div class="resource-ctrls pull-right">
-            <a href="#user_endpoint_list" class="listops">
+            <a href="#member_endpoint_list" class="listops">
               Show Operations
             </a>&nbsp|&nbsp
-            <a href="#user_endpoint_list" class="expandops">
+            <a href="#member_endpoint_list" class="expandops">
               Show Details
             </a>
           </div>
   			</div>
   			<!-- begin user endpoint list -->
-        <ul id="user_endpoint_list" class="endpoint-list collapse">
-          <li class="post endpoint"><!-- user/POST/ -->
+        <ul id="member_endpoint_list" class="endpoint-list collapse">
+          
+					
+					
+					
+					<li class="post endpoint"><!-- member/POST/ -->
             <div class="endpoint-heading">
-              <a href="#user_post_content" data-toggle="collapse" class="expcontent operator">POST</a>
-              <a href="#user_post_content" data-toggle="collapse" class="expcontent endpoint-path">/user</a>
-              <a href="#user_post_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">add a user to the NDS</a>
+              <a href="#member_post_content" data-toggle="collapse" class="expcontent operator">POST</a>
+              <a href="#member_post_content" data-toggle="collapse" class="expcontent endpoint-path">/user</a>
+              <a href="#member_post_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">add a user to the NDS</a>
             </div>
-            <div id="user_post_content" class="endpoint-content collapse">
+            <div id="member_post_content" class="endpoint-content collapse">
               user posting content
             </div>
-          </li>
-          <li class="put endpoint"><!-- user/PUT/ -->
+          </li><!-- member/POST/ -->
+					
+					
+					
+					
+          <li class="put endpoint"><!-- member/PUT/ -->
             <div class="endpoint-heading">
-              <a href="#user_put_content" data-toggle="collapse" class="expcontent operator">PUT</a>
-              <a href="#user_put_content" data-toggle="collapse" class="expcontent endpoint-path">/user</a>
-              <a href="#user_put_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">revise a user in the NDS</a>
+              <a href="#member_put_content" data-toggle="collapse" class="expcontent operator">PUT</a>
+              <a href="#member_put_content" data-toggle="collapse" class="expcontent endpoint-path">/user</a>
+              <a href="#member_put_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">revise a user in the NDS</a>
             </div>
-            <div id="user_put_content" class="endpoint-content collapse">
+            <div id="member_put_content" class="endpoint-content collapse">
               user PUT content, blah, blah, blah
             </div>
-          </li>
-          <li class="get endpoint"><!-- user/GET/{id} -->
+          </li><!-- member/PUT/ -->
+					
+					
+					
+          <li class="get endpoint"><!-- member/GET/{id} -->
             <div class="endpoint-heading">
-              <a href="#user_get_content" data-parent="user_endpoint_list" data-toggle="collapse" class="expcontent operator">GET</a>
-              <a href="#user_get_content" data-toggle="collapse" class="expcontent endpoint-path">/user/{id}</a>
-              <a href="#user_get_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">find a user by ID</a>
+              <a href="#member_get_content" data-parent="member_endpoint_list" data-toggle="collapse" class="expcontent operator">GET</a>
+              <a href="#member_get_content" data-toggle="collapse" class="expcontent endpoint-path">/user/{id}</a>
+              <a href="#member_get_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">find a user by ID</a>
             </div>
-            <div id="user_get_content" class="endpoint-content collapse">
+            <div id="member_get_content" class="endpoint-content collapse">
               user GET content, blah, blah, blah
             </div>
-          </li>
-          <li class="get endpoint"><!-- user/GET/{other} -->
+          </li><!-- member/GET/{id} -->
+					
+					
+					
+					
+          <li class="get endpoint"><!-- member/GET/{other} -->
             <div class="endpoint-heading">
-              <a href="#user_get2_content" data-parent="user_endpoint_list" data-toggle="collapse" class="expcontent operator">GET</a>
-              <a href="#user_get2_content" data-toggle="collapse" class="expcontent endpoint-path">/user/{other}</a>
-              <a href="#user_get2_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">find a user by keyword</a>
+              <a href="#member_get2_content" data-parent="member_endpoint_list" data-toggle="collapse" class="expcontent operator">GET</a>
+              <a href="#member_get2_content" data-toggle="collapse" class="expcontent endpoint-path">/user/{other}</a>
+              <a href="#member_get2_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">find a user by keyword</a>
             </div>
-            <div id="user_get2_content" class="endpoint-content collapse">
+            <div id="member_get2_content" class="endpoint-content collapse">
               user GET2 content, blah, blah, blah, keyward
             </div>
           </li>
-          <li class="delete endpoint"><!-- user/DELETE/{id} -->
+					
+					
+					
+					
+          <li class="delete endpoint"><!--member/DELETE/{id} -->
             <div class="endpoint-heading">
-              <a href="#user_delete_content" data-parent="user_endpoint_list" data-toggle="collapse" class="expcontent operator">DELETE</a>
-              <a href="#user_delete_content" data-toggle="collapse" data-toggle="collapse" class="expcontent endpoint-path">/user/delete/{id}</a>
-              <a href="#user_delete_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">delete a user</a>
+              <a href="#member_delete_content" data-parent="member_endpoint_list" data-toggle="collapse" class="expcontent operator">DELETE</a>
+              <a href="#member_delete_content" data-toggle="collapse" data-toggle="collapse" class="expcontent endpoint-path">/user/delete/{id}</a>
+              <a href="#member_delete_content" data-toggle="collapse" class="expcontent endpoint-desc pull-right">delete a user</a>
             </div>
-            <div id="user_delete_content" class="endpoint-content collapse">
+            <div id="member_delete_content" class="endpoint-content collapse">
               user DELETE content, blah, blah, blah
             </div>
           </li>
         </ul><!-- end user endpoint list -->
   		</li>
+			
+			
+			<!-- end members -->
+			
 
       <li id="resource_cost" class="resource-item">
         <!-- cost resource heading -->
         <div class="resource-heading">
-          <a href="#cost_endpoint_list" data-toggle="collapse">
+          <a class="resource-heading-link" href="#cost_endpoint_list" data-toggle="collapse">
             budget
           </a>
           <span>: Budget Operations</span>
@@ -1496,6 +1519,21 @@
 <!-- TODO: MOVE TO EXTERNAL FILE? -->
 <script>
 
+$('.resource-heading-link').click(function(event){
+	
+	if($(this).hasClass("collapsed")) {
+		$(this).parent().find('.listops').html("Hide Operations");
+	}
+	else {
+		$(this).parent().find('.listops').html("Show Operations");
+	}
+	
+})
+
+
+// TODO: Optimise these funcitons to reduce the number 
+//       of DOM searches. 
+
 $('.listops').click(function(event) {
   event.preventDefault();
 	if($(this).html().trim() == "Show Operations") {
@@ -1511,6 +1549,9 @@ $('.listops').click(function(event) {
     .collapse('hide');
 		
 });
+
+// TODO: Make this dependendt on actual visibility, not
+//       the controller's state label.
 $('.expandops').click(function(event) {
   event.preventDefault();
 	if($(this).html().trim()=="Show Details") {
