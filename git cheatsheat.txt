@@ -1,0 +1,98 @@
+Remotes
+git branch --set-upstream-to=<remote>/<branch?
+git fetch  NOTE: typically followed by a merge doesnt overwright working copy
+git pull  NOTE: merges in the remote changes.
+git push -u origin feature_branch_name (pushes to new branch in remote, sets tracking)
+git push --all -u (to push all branches)
+git remote rename <old> <new>
+git remote remove <remote>
+git remote show <remote>
+git remote -v 
+git remote prune (removes unused branches)
+
+
+Branches & Checkout
+git checkout <existing branch>
+git checkout -b <new branch>
+git branch -d <branch to delete>
+git branch <new branch>
+git branch --no-merged 
+git branch -m <new name> (renames current branch)
+git branch -m <old name> <new name>
+Start Branch at a previous commit
+	git checkout <sha1>
+	git branch <new branch>
+Undo Inadvertent Fast Forward	or 
+	A-B---- master			A-B-C-D
+		 \   /
+      C-D develop
+		
+	git checkout master
+	git reset --hard <sha-B>
+	git checkout develop
+	git reset --hard <sha-D>
+	git checkout master
+	git merge develop --no-ff
+git diff <src_branch> <target_branch>
+
+
+Tagging
+git tag <1.0.0> <commit-sha>
+	
+		
+Commits
+git reset --hard <last good sha> "like it never happened"
+git reset <sha> (undoes all commits, but preserves local changes)
+git reflog and git reset or git checkout  "undo's the above"
+git commit --amend
+Multiple commits on wrong branch?
+	See "Undo Indadvertent Fast Forward", creating a new branch if necessary
+Committed on the wrong branch
+	git reset --soft HEAD~1
+	*create or checkout branch*
+	git commit 
+Recover inadvertently deleted, not committed
+	git reset HEAD --hard		NOTE: does not keep WIP.	
+Drop the last commit
+	git reset HEAD^ --hard
+	or: git reset HEAD~# --hard  :where #=number of commits from pointer
+Unstage a deleted file
+	git reset -- <file>
+	git checkout  -- <file>
+Remove last PUSHED change from the remote repos
+	git push -f origin HEAD^:<branch>
+Change a commit author or message
+	A-B-C-D-E-F where F as HEAD
+	git rebase -i <sha-B>
+	change the lines for both C & D to "edit"
+	when rebase pauses at C... git commit --amend --author = "Author name <email@address.com>"
+	git rebase --continue
+	pause at D... "git commit --amend --message = "blah,blah,blah"
+	"git rebase --continue" until complete
+Remove a pushed commit.
+	git revert <sha>   NOTE: this is an "anti-matter" reversal.
+Change last commit message
+	git commit --amend -m "new message"
+	
+
+Info
+Git image size
+	git gc
+	du -sh .git/
+Who dunnit
+	git blame <flie>
+	git gui blame <flie>
+
+Log
+git log
+git log --author=<name>
+git log --pretty=oneline
+git log --graph --oneline --decorate --all
+git log --name-status  (only lists files)
+git log --grep="somethign in message"
+
+
+Files
+git rm <file>
+git rm --cached <file> (removes from git, but keeps on disk)
+git mv <old name> <new name>

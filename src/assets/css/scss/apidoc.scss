@@ -106,6 +106,17 @@ li.resource-item:not(:first-child) {
   font-weight: normal;
 }
 
+.listops {
+	display: inline-block;
+	text-align: center;
+	width: 8.1em;
+}
+
+.expandops {
+	display: inline-block;
+	text-align: center;
+	width: 6em;
+}
 .endpoint-heading {
   border-style: solid;
   border-width: $borderWidth;
@@ -139,7 +150,8 @@ a:active.operator {
 }
 
 a.endpoint-path {
-  color: $regBlack
+ color: $regBlack;
+ font-weight: 700;
 }
 
 .endpoint-desc {
@@ -191,6 +203,10 @@ a.endpoint-path {
 	color:$colorPOSTfeat;
 }
 
+.post .endpoint-path {
+  color: $colorPOSTfeat;
+}
+
 /*
  * styling for the PUT operator type
  */
@@ -210,6 +226,10 @@ a.endpoint-path {
 }
 
 .put .endpoint-content h1 {
+  color: $colorPUTfeat;
+}
+
+.put .endpoint-path {
   color: $colorPUTfeat;
 }
 
@@ -235,6 +255,10 @@ a.endpoint-path {
   color: $colorGETfeat;
 }
 
+.get .endpoint-path {
+  color: $colorGETfeat;
+}
+
 /*
  * styling for the DELETE operator type
  */
@@ -254,6 +278,10 @@ a.endpoint-path {
 }
 
 .delete .endpoint-content h1 {
+  color: $colorDELETEfeat;
+}
+
+.delete .endpoint-path {
   color: $colorDELETEfeat;
 }
 
