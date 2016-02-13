@@ -1,0 +1,55 @@
+Find anything
+[ctrl]+P
+File  ?
+Line no  :
+Function  @
+Variable  #
+Goto Line [ctrl]+G
+
+
+Line controls
+auto align [ctrl]+[alt]+A
+duplicate line  [ctrl]+[shift]+D
+increment #  [ctrl]+[up/down]
+move line [ctrl]+[shift]+[up/down]
+multicursor [ctrl]+D or [ctrl]+[click]
+matching bracket  [ctrl]+M
+join line  [ctrl]+J
+delete to start of line [ctrl]+[shift]+[bkspc]
+delete to end of loine [ctrl]+[shift]+[delete]
+
+View
+Panes [alt]+[shift]+[1,2,3...]
+Toggle files [ctrl]+[tab]
+Cycle tabs [ctrl]+{pgUp/PgDn}
+goto line [ctrl]+G
+
+Text
+lorem text [alt]+L
+           "lorem[w,p]"+[alt]+L
+           'lorem' + [tab]
+autocomplete [ctrl]+[space]
+comments [ctrl]+[shift]+/
+close html tag [alt]+.
+column selection [ctrl]+[alt]+[up/down]
+
+
+
+
+NP++
+
+Edit controls
+multicursor [ctrl]+[click]
+move line [ctrl]+[shift}+[up/down]
+auto align any [ctrl]+[shift] + =
+auto align = [ctrl] + =, [ctrl] + =
+auto align spc [ctrl]+=,[ctrl]+[space]
+matching brace [ctrl]+B
+join line [ctrl]+j
+
+
+Text
+
+
+View
+goto line [ctrl]+G
