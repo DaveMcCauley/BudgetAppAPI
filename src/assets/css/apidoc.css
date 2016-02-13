@@ -59,6 +59,19 @@ li.resource-item:not(:first-child) {
   font-size: 14px;
   font-weight: normal; }
 
+.listops {
+	display: inline-block;
+	text-align: center;
+	width: 8.1em;
+}
+
+.expandops {
+	display: inline-block;
+	text-align: center;
+	width: 6em;
+}
+	
+	
 /* line 109, scss/apidoc.scss */
 .endpoint-heading {
   border-style: solid;
