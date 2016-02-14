@@ -332,16 +332,17 @@ module.exports = function(grunt) {
     },
 
 
+
 // SCSSLINT =========================================================
    scsslint : {
-        all: [
-          'src/**/*.scss'
-        ],
+        allFiles: ['src/**/*.scss'],
         options: {
+          config: '.sass-lint.yml',
           colorizeOutput: true,
           force: true
         }
     },
+
 
 
 // TARGETHTML =======================================================
@@ -423,7 +424,7 @@ module.exports = function(grunt) {
 
   });
 
-  
+
 
   // create the tasks
   grunt.registerTask('dev-start-win',['express:dev','open:dev','watch']);
@@ -431,7 +432,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dev-build',['scsslint','sass','csslint:dev_lax','autoprefixer:dev','jshint:dev','htmlhint']);
   grunt.registerTask('prod-start-win',['express:prod','open:prod','watch']);
 	grunt.registerTask('prod-start-mac',['express:prod','open:mac','watch']);
-  grunt.registerTask('prod-build',['clean','scsslint','sass:prod','csslint:prod_lax','autoprefixer:prod','cssmin:prod','jshint:prod','uglify:prod','htmlhint','htmlmin:prod','imagemin']);  
+  grunt.registerTask('prod-build',['clean','scsslint','sass:prod','csslint:prod_lax','autoprefixer:prod','cssmin:prod','jshint:prod','uglify:prod','htmlhint','htmlmin:prod','imagemin']);
 
 
 };

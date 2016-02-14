@@ -38,8 +38,8 @@
     "grunt-open": "0.2.3",
     "grunt-targethtml": "latest",
     "load-grunt-tasks": "latest",
-    "grunt-scss-lint": "latest",
-    "grunt-express": "latest"
+    "grunt-express": "latest",
+    "grunt-scss-lint": "latest"
   },
   "dependencies": {
     "body-parser": "~1.5.2",
