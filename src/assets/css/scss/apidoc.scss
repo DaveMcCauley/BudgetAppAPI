@@ -59,16 +59,18 @@ $opcode-width:         50px;
 
 
 // special definitions for return code pills
-$pill-border-radius:  4px;
-$pill-color-err:      rgb(208, 68, 55);
-$pill-color-ok:       rgb(20, 137, 44);
-$pill-color-warn:     rgb(255, 168, 0);
-$pill-color-text:     $reg-white;
-$pill-font-size:      11px;
-$pill-font-weight:    600;
-$pill-height:         20px;
-$pill-width:          75px;
-$pill-padding-top:    4px;
+$pill-border-radius:    6px;
+$pill-color-err:        rgb(208, 68, 55);
+$pill-color-ok:         rgb(20, 137, 44);
+$pill-color-warn:       rgb(255, 168, 0);
+$pill-color-text:       $reg-white;
+$pill-color-text-warn:  $reg-black;
+$pill-font-size:        11px;
+$pill-font-size-warn:   12px;
+$pill-font-weight:      600;
+$pill-height:           20px;
+$pill-width:            75px;
+$pill-padding-top:      6px;
 
 
 // route content defintions
@@ -77,9 +79,12 @@ $subtext-font-weight-h1: 600;
 
 
 // special definitions for json code display
-$color-json-bg:       rgb(250, 250, 250);
-$color-json-property: rgb(85, 85, 170);
-$font-json-size:      13px;
+$json-color-border:     rgb(210, 210, 210);
+$json-color-bg:         rgb(240, 240, 240);
+$json-color-property:   rgb(0, 4, 100);
+$json-font-size:        14px;
+$json-font-size-before: 13px;
+$json-font-weight:      500;
 
 
 // font stacks for consistency
@@ -232,7 +237,7 @@ h3 {
   font-weight: $opcode-font-weight;
   height: $opcode-height;
   margin-right: 10px;
-  padding-top: 5px;
+  padding-top: 4px;
   text-align: center;
   width: $opcode-width;
 }
@@ -334,7 +339,7 @@ h3 {
   vertical-align: top;
 }
 
-.resonse .status {
+.response .status {
   width: 20%;
 }
 
@@ -343,6 +348,8 @@ h3 {
   padding-left: 0;
   width: 80%;
 }
+
+
 
 //
 //
@@ -371,15 +378,70 @@ h3 {
   background-color: $pill-color-err;
 }
 
-.pill.warning {
+.pill.warn {
   background-color: $pill-color-warn;
+  color: $pill-color-text-warn;
+  font-size: $pill-font-size-warn;
 }
+
+.warn-note {
+  display: inline-block;
+  padding-left: 20px;
+}
+
+
+//
+//
+//  SECTION AA -- json styling for examples within content sections
+//
+//
+
+
+.json {
+  background-color: $json-color-bg;
+  border-width: 1px;
+  border-color: $json-color-border;
+  border-style: solid;
+  display: inline-block;
+  font-family: $code-font-stack;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px; }
+
+.json div {
+  margin-left: 10px;
+  color: $json-color-property;
+  font-size: $json-font-size;
+  font-weight: $json-font-weight;
+  background-color: inherit; }
+
+.json.example {
+  position: relative;
+  margin-top: 35px;
+  margin-left: 0;
+  max-width: 85%;
+  display: block;
+}
+
+.json.example::before {
+  color: $reg-black;
+  content: 'Example';
+  font-family: $normal-font-stack;
+  font-size: $json-font-size-before;
+  font-weight: 700;
+  left: -0px;
+  position: absolute;
+  text-transform: uppercase;
+  top: -20px; }
+
 
 //
 //
 //  SECTION 4 -- Styling for the POST server routes.
 //
 //
+
 
 .post {
   background-color: $post-color-bg;

@@ -11,12 +11,19 @@
   <h1>BudgetApp API Spec v0.0</h1>
   <h3>This is the API spec template. The routes are not real. Yet.</h3>
 
+
+<!-- BUDGETS -->
+
+
   <div class="ac">
 
     <input class="ac-input" id="budgets" name="Budgets" type="checkbox" />
     <label class="ac-label" for="budgets">budgets/</label>
 
     <article class="ac-text">
+
+<!-- POST budgets/ -->
+
 
       <div class="ac-sub post">
         <input class="ac-input" id="post-budget" name="ac-2" type="checkbox" />
@@ -33,100 +40,659 @@
           <div class="param-row">
             <div class="param name"><p>name</p></div>
             <div class="param reqd">required</div>
-            <div class="param desc">This is a long description of what
-              the parameter is, does, and what it's there for.</div>
+            <div class="param desc">name for the budget.</div>
             <div class="param data">a string with a length from 1 to 16384 </div>
             <div class= "param default">[none]</div>
           </div>
           <div class="param-row">
             <div class="param name">description</div>
             <div class="param reqd">required</div>
-            <div class="param desc">This is a long description of what
-              the parameter is, does, and what it's there for.</div>
+            <div class="param desc">description of the budget.</div>
             <div class="param data">a string with a length from 0 to 16384 </div>
             <div class= "param default">[none]</div>
           </div>
-          <p>My younger brother was in London when the Martians fell at Woking.
-             He was a medical student working for an imminent examination,
-             and he heard nothing of the arrival until Saturday morning.
-             The morning papers on Saturday contained, in addition to lengthy
-             special articles on the planet Mars, on life in the planets,
-             and so forth, a brief and vaguely worded telegram, all the more
-             striking for its brevity.
-          </p>
-          <p>The Martians, alarmed by the approach of a crowd, had killed a
-             number of people with a quick-firing gun, so the story ran.  The
-             telegram concluded with the words: "Formidable as they seem to be,
-             the Martians have not moved from the pit into which they have
-             fallen, and, indeed, seem incapable of doing so.  Probably this
-             is due to the relative strength of the earth's gravitational
-             energy."  On that last text their leader-writer expanded very
-             comfortingly.
-          </p>
           <h1>Responses</h1>
           <div class="response-row">
             <div class="response status"><div class="pill ok">STATUS 200</div></div>
-            <div class="response note">The user was removed successfully.</div>
+            <div class="response note">The budget was created successfully.</div>
           </div>
           <div class="response-row">
             <div class="response status"><div class= "pill err">STATUS 401</div></div>
-            <div class="response note">Returned if the user is authenticated, but lacks requried read
-              permission to view the requested fields. For testing, I'm going add a much longer respone
-              description to make sure the text flows as a table cell correctly and nicely.
+            <div class="response note">Returned if the user is authenticated, but lacks requried
+              permission to create a budget.
             </div>
           </div>
           <div class="response-row">
             <div class="response status"><div class= "pill err">STATUS 404</div></div>
-            <div class="response note">REturned if the user is not authenticated, or the budget {id}
+            <div class="response note">The user is not authenticated, or the budget {id}
               is not valid.
             </div>
           </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Movet
-             tenebimus laetitiam virtutes, cives aspernandum leniter nunc
-             noctesque infinitis libido pleniorem magnos inter. Vix ignoratione
-             expectat perspicuum prosperum consuetudine eademque probatum
-             eosque praeclaram. Fabellas detrimenti levamur interpretaris
-             medicorum explentur malivoli expedire oportere, tractatas animo
-             diceretur, improbis possit
-          </p>
-          <p>Desideret videtis civibus angusta disserendi versuum, scribendi
-             gravis dolemus vindicet gubernatoris pertinax dolemus ignorare
-             genuit insatiabiles, pertineant ferantur disciplinis dominorum
-             oderit probatum ingeniis diceret platone, facio maiores defensa
-             inanitate respondendum desiderabile audiebamus numeranda, ornatus,
-             amicitiam fautrices seiunctum provident vivi efficiantur
-             faciendumve posteri. Hac epicuro quisque ponunt maximisque
-          </p>
         </article>
-      </div>
+      </div><!-- POST budgets/ -->
+
+
+<!-- GET budgets/{id} -->
+
 
       <div class="ac-sub get">
         <input class="ac-input" id="ac-3" name="ac-3" type="checkbox" />
-        <label class="ac-label" for="ac-3"><span class="opcode">GET</span>budgets/</label>
+        <label class="ac-label" for="ac-3"><span class="opcode">GET</span>budgets/{id}</label>
         <article class="ac-sub-text">
-          <p>My younger brother was in London when the Martians fell at
-					   Woking. He was a medical student working for an imminent
-						 examination, and he heard nothing of the arrival until Saturday
-						 morning.  The morning papers on Saturday contained, in addition
-						 to lengthy special articles on the planet Mars, on life in the
-						 planets, and so forth, a brief and vaguely worded telegram, all
-						 the more striking for its brevity.
-					</p>
-					<p>The Martians, alarmed by the approach of a crowd, had killed a
-						 number of people with a quick-firing gun, so the story ran.
-						 The telegram concluded with the words: "Formidable as they seem to
-						 be, the Martians have not moved from the pit into which they have
-						 fallen, and, indeed, seem incapable of doing so.  Probably this
-						 is due to the relative strength of the earth's gravitational
-						 energy."  On that last text their leader-writer expanded very
-						 comfortingly.
-					</p>
-        </article>
-      </div>
 
-    </article><!--/ac-text-->
+          <h1>Implementation Notes</h1>
+          <div class="pill warn">NOTE!</div><div class="warn-note">This endpoint returns
+            a set of "items" for the latest budget version.
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 200</div></div>
+            <div class= "response note">Return the full budget data model in
+              <i>application/json</i>.
+              <div class="json example">
+                <div>{
+                    <div>"name": "Test Budget"</div>
+                    <div>"desc": "Test Budget is a budget we created for testing the API",</div>
+                    <div>"closed": false,</div>
+                    <div>"idOrganization": "537cf652578583fffa17cfff",</div>
+                    <div>"shortLink": "3dRgj0NX ",</div>
+                    <div>"dateLastActivity": "2015-12-05T04:07:12.253Z",</div>
+                    <div>"dateLastView": "2015-12-06T11:15:23.356Z",</div>
+                    <div>"id": "54565cf151a1541b454ccff",</div>
+                    <div>"starred": false,</div>
+                    <div>"url": "https://budgetapp.com/b/2dRgj0NX/Test-Budget",</div>
+                    <div>"shortURL": "https://budgetapp.com/b/2dRgj0NX",</div>
+                    <div>"prefs": [
+                      <div>{
+                        <div>"permissionLevel": "private",</div>
+                        <div>"requests": "disabled",</div>
+                        <div>"invitations": "members",</div>
+                        <div>"avatar": "#0070BF",</div>
+                        <div>"canInvite": true,</div>
+                      } </div>
+                    ], </div>
+                    <div>"memberships": [
+                      <div>{
+                        <div>"id": "23654f254ccc145a14c",</div>
+                        <div>"idMember": "54511145c14fff2215c",</div>
+                        <div>"memberType": "admin",</div>
+                        <div>"unconfirmed": false,</div>
+                        <div>"deactivated": false</div>
+                      },   {
+                        <div>"id": "6944515adfff124c545b",</div>
+                        <div>"idmember": "45114dffddda45414",</div>
+                        <div>"memberType": "admin",</div>
+                        <div>"unconfirmed": false,</div>
+                        <div>"deactivated": false,</div>
+                      }</div>
+                    ],</div>
+                    <div>"versions": [
+                      <div>{
+                        <div>"id": "47877c4a457aa548b54ff",</div>
+                        <div>"name": "Preliminary version",</div>
+                        <div>"dateCreate": "2014-12-08T01:05:13.254Z",</div>
+                        <div>"dateLastActivity": "2015-01-02T05:17:36.664",</div>
+                        <div>"deactivated": true,</div>
+                        <div>"pos": 0,</div>
+                        },  {
+                        <div>"id": "2315c1254a1a1a21bcca",</div>
+                        <div>"name": "First revised version",</div>
+                        <div>"dateCreate": "2015-01-03T14:05:13.221",</div>
+                        <div>"dateLastActivity": "2015-02-12T13:13:125",</div>
+                        <div>"deactivated": true,</div>
+                        <div>"pos": 1,</div>
+                        }</div>
+                    ]</div>
+                    <div>"items": [
+                      <div>{
+                        <div>"id": "857145f1fffc145cda4",</div>
+                        <div>"name": "Budget iten number one",</div>
+                        <div>"desc": "This si descriptoin of the first budget item",</div>
+                        <div>"closed": false,</div>
+                        <div>"dateLastActivity": "2015-02-27T12:04:12.770",</div>
+                        <div>"Amount": "28000.000",</div>
+                        <div>"idParent": "",</div>
+                        <div>"idHead": "654ff154c25a545c2154a",</div>
+                        <div>"idVersion": "478877c4a457aa548b54ff",</div>
+                        <div>"idLabels": [
+                          <div>{
+                            <div>"id": "54254c445c4a45aff4"</div>
+                          }</div>
+                        ]</div>
+                        <div>"idSplits": [
+                          <div>{
+                            <div>"id": "8554564d4544cc45d54a",</div>
+                            <div>"desc": "Split",</div>
+                            <div>"percentage": 0.200,</div>
+                            },   {
+                            <div>"id": "545648187c815c45a1454",</div>
+                            <div>"desc": "Another split",</div>
+                            <div>"percnetage": "0.800",</div>
+                          }</div>
+                        ]</div>
+                        <div>"pos": 0,</div>
+                        <div>"shortLink": "454c5",</div>
+                        <div>"url": "https://budgetapp.com/i/454c5/Budget-item-number-one",</div>
+                        <div>"shortUrl": "https://budgetapp.com/i/454c5",</div>
+                      },  {
+                        <div>"id": "857145f1fffc145cda4",</div>
+                        <div>"name": "Budget iten number one",</div>
+                        <div>"desc": "This si descriptoin of the first budget item",</div>
+                        <div>"closed": false,</div>
+                        <div>"dateLastActivity": "2015-02-27T12:04:12.770",</div>
+                        <div>"Amount": "28000.000",</div>
+                        <div>"idParent": "",</div>
+                        <div>"idHead": "654ff154c25a545c2154a",</div>
+                        <div>"idVersion": "478877c4a457aa548b54ff",</div>
+                        <div>"idLabels": [
+                          <div>{
+                            <div>"id": "54254c445c4a45aff4"</div>
+                          }</div>
+                        ]</div>
+                        <div>"idSplits": [
+                          <div>{
+                            <div>"id": "8554564d4544cc45d54a",</div>
+                            <div>"desc": "Split",</div>
+                            <div>"percentage": 0.200,</div>
+                            },   {
+                            <div>"id": "545648187c815c45a1454",</div>
+                            <div>"desc": "Another split",</div>
+                            <div>"percnetage": "0.800",</div>
+                          }</div>
+                        ]</div>
+                        <div>"pos": 0,</div>
+                        <div>"shortLink": "454c5",</div>
+                        <div>"url": "https://budgetapp.com/i/454c5/Budget-item-number-one",</div>
+                        <div>"shortUrl": "https://budgetapp.com/i/454c5",</div>
+                      }</div>
+                    ]</div>
+                }</div>
+              </div>
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested budget.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div><!-- GET budgets/{id} -->
+
+
+<!-- GET bugets/{id}/fields/ -->
+
+
+      <div class="ac-sub get">
+        <input class="ac-input" id="ac-budget-fields" name="ac-budget-fields" type="checkbox" />
+        <label class="ac-label" for="ac-budget-fields"><span class="opcode">GET</span>budgets/{id}/fields/{field}</label>
+        <article class="ac-sub-text">
+        <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>field</p></div>
+            <div class="param reqd">required</div>
+            <div class="param desc">the requested field</div>
+            <div class="param data"><u>One of:</u>
+              <ul>
+                <li>name</li>
+                <li>desc</li>
+                <li>idOrganization</li>
+                <li>dateLastActivity</li>
+                <li>dateLastView</li>
+                <li>starred</li>
+                <li>url</li>
+                <li>memberships</li>
+                <li>items</li>
+                <li>versions</li>
+                <li>prefs</li>
+              </ul>
+            </div>
+            <div class= "param default">[none]</div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 200</div></div>
+            <div class= "response note">The requested field was returned.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested fields.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div><!-- GET bugets/{id}/fields/ -->
+
+
+<!-- GET bugets/{id}/members -->
+
+
+      <div class="ac-sub get">
+        <input class="ac-input" id="ac-budget-members" name="ac-budget-members" type="checkbox" />
+        <label class="ac-label" for="ac-budget-members"><span class="opcode">GET</span>budgets/{id}/members/</label>
+        <article class="ac-sub-text">
+        <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>filter</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">limits results</div>
+            <div class="param data"><u>One of:</u>
+              <ul>
+                <li>admins</li>
+                <li>all</li>
+                <li>me</li>
+                <li>none</li>
+                <li>normal</li>
+                <li>owners</li>
+              </ul>
+            </div>
+            <div class= "param default">all</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>fields</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">specifies/limits data returned for each user</div>
+            <div class="param data">all<br><u>or a comma-separated list of:</u>
+              <ul>
+                <li>avatar</li>
+                <li>bio</li>
+                <li>confirmed</li>
+                <li>email</li>
+                <li>fullName</li>
+                <li>initials</li>
+                <li>memberType</li>
+                <li>status</li>
+                <li>url</li>
+                <li>username</li>
+              </ul>
+            </div>
+            <div class= "param default">all</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>actions</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">if set, the request returns a list of all
+              actions by the user on the supplied budget
+            </div>
+            <div class="param data">true or false</div>
+            <div class= "param default">false</div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 200</div></div>
+            <div class= "response note">The requested field was <i>returned</i>.
+              <div class="json example">
+                <div>[{
+                  <div>"id": "4ee7df1be582acdec80000ae",</div>
+                  <div>"fullName": "Bob Tester",</div>
+                  <div>"username": "bobtester"</div>
+                  <div>}, {</div>
+                  <div>"id": "4ee7df74e582acdec80000b6",</div>
+                  <div>"fullName": "David Tester",</div>
+                  <div>"username": "davidtester"</div>
+                  <div>}, {</div>
+                  <div>"id": "4ee7deffe582acdec80000ac",</div>
+                  <div>"fullName": "Joe Tester",</div>
+                  <div>"username": "joetester"</div>
+                }]</div>
+              </div>
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested fields.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- GET budget/{id}/members/ -->
+
+
+<!-- GET budgets/membersInvited -->
+
+
+      <div class="ac-sub get">
+        <input class="ac-input" id="ac-budget-membersInvited" name="ac-budget-membersInvited" type="checkbox" />
+        <label class="ac-label" for="ac-budget-membersInvited"><span class="opcode">GET</span>budgets/{id}/membersInvited/</label>
+        <article class="ac-sub-text">
+        <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>fields</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">specifies/limits data returned for each user</div>
+            <div class="param data">all<br><u>or a comma-separated list of:</u>
+              <ul>
+                <li>avatar</li>
+                <li>bio</li>
+                <li>confirmed</li>
+                <li>email</li>
+                <li>fullName</li>
+                <li>initials</li>
+                <li>memberType</li>
+                <li>status</li>
+                <li>url</li>
+                <li>username</li>
+              </ul>
+            </div>
+            <div class= "param default">all</div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 200</div></div>
+            <div class= "response note">The requested field was <i>returned</i>.
+              <div class="json example">
+                <div>[{
+                  <div>"id": "4ee7df1be582acdec80000ae",</div>
+                  <div>"fullName": "Bob Tester",</div>
+                  <div>"username": "bobtester"</div>
+                  <div>}, {</div>
+                  <div>"id": "4ee7df74e582acdec80000b6",</div>
+                  <div>"fullName": "David Tester",</div>
+                  <div>"username": "davidtester"</div>
+                  <div>}, {</div>
+                  <div>"id": "4ee7deffe582acdec80000ac",</div>
+                  <div>"fullName": "Joe Tester",</div>
+                  <div>"username": "joetester"</div>
+                }]</div>
+              </div>
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested fields.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- GET budget/{id}/membersInvited/ -->
+
+
+<!-- GET budget/{id}/myPrefs/ -->
+
+
+       <div class="ac-sub get">
+        <input class="ac-input" id="ac-budget-myPrefs" name="ac-budget-myPrefs" type="checkbox" />
+        <label class="ac-label" for="ac-budget-myPrefs"><span class="opcode">GET</span>budgets/{id}/myPrefs/</label>
+        <article class="ac-sub-text">
+        <h1>Arguments</h1>
+          None
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 200</div></div>
+            <div class= "response note">The requested field was <i>returned</i>.
+              <div class="json example">
+                <div>[{
+                  <div>"permissionLevel": "private",</div>
+                  <div>"requests": "disabled",</div>
+                  <div>"invitations": "members",</div>
+                  <div>"avatar": "#0070BF",</div>
+                  <div>"canInvite": true,</div>
+                }]</div>
+              </div>
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested fields.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- budget/{id}/myPrefs/ -->
+
+
+<!-- budgets/{id}/organization -->
+
+
+      <div class="ac-sub get">
+        <input class="ac-input" id="ac-budget-organizations" name="ac-budget-organizations" type="checkbox" />
+        <label class="ac-label" for="ac-budget-organizations"><span class="opcode">GET</span>budgets/{id}/membersInvited/</label>
+        <article class="ac-sub-text">
+        <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>fields</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">specifies/limits data returned for the budget's organziation</div>
+            <div class="param data">all<br><u>or a comma-separated list of:</u>
+              <ul>
+                <li>memberCount</li>
+                <li>desc</li>
+                <li>displayName</li>
+                <li>idBoards</li>
+                <li>invitations</li>
+                <li>invited</li>
+                <li>logoHash</li>
+                <li>memberships</li>
+                <li>name</li>
+                <li>products</li>
+                <li>url</li>
+                <li>website</li>
+                <li>username</li>
+              </ul>
+            </div>
+            <div class= "param default">all</div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 200</div></div>
+            <div class= "response note">The requested field was <i>returned</i>.
+              <div class="json example">
+                <div>[{
+                  <div>"memberCount": 5,</div>
+                  <div>"desc": "Tester Corporation's Budgeting Tool",</div>
+                  <div>"displayName": "Tester Corp TM"</div>
+                  <div>"idBoards": [
+                    <div>{
+                      <div>"id": 4ee7df74e582acdec80000b6",</div>
+                      <div>"id": 45c45da5454f455df54f55ff"</div>
+                    </div>}
+                  </div>]
+                  <div>"invitations": [{ }]</div>
+                  <div>"invited": [{ }]</div>
+                  <div>"logoHash": "4ee7deffe582acdec80000ac",</div>
+                  <div>"name": "Tester Corporation Inc.",</div>
+                  <div>"url": "http://budgetapp.com/o/Tester-coroporation-inc",</div>
+                  <div>"website": "www.testercorp.com"</div>
+                }]</div>
+              </div>
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested fields.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- budget/{id}/organization/ -->
+
+
+<!-- DELETE budgets/{id} -->
+
+
+      <div class="ac-sub delete">
+        <input class="ac-input" id="ac-del.budget" name="ac-del.budget" type="checkbox" />
+        <label class="ac-label" for="ac-del.budget"><span class="opcode">DELETE</span>budgets/{id}</label>
+        <article class="ac-sub-text">
+          <h1>Implementation Notes</h1>
+          <div class="response-row">
+            <div class= "response status"><div class="pill warn">WARNING!</div></div>
+            <div class="response note">This endpoint permanently deletes the budget from
+              the storage facility. The deletion is permanent, and unrecoverable. There is no
+              undo. Generally, your implementation should close a budget, rather than deleting it.
+            </div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 200</div></div>
+            <div class= "response note">The budget was deleted.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested fields.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- DELETE budget/{id} -->
+
+
+<!-- DELETE budgets/{id}/member -->
+
+
+      <div class="ac-sub delete">
+        <input class="ac-input" id="ac-budget.delete-members" name="ac-budget.delete-members" type="checkbox" />
+        <label class="ac-label" for="ac-budget.delete-members"><span class="opcode">DELETE</span>budgets/{id}/member/</label>
+        <article class="ac-sub-text">
+        <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>idMember</p></div>
+            <div class="param reqd">required</div>
+            <div class="param desc">specifies a member to remove from the budget</div>
+            <div class="param data">any valid user id</div>
+            <div class= "param default">[none]</div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 200</div></div>
+            <div class= "response note">The member was removed.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested fields.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, if the budget doesn't exist, or
+              the user does not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- DELETE budget/{id}/member/ -->
+
+    </article><!-- end resrouce budgets/-->
 
   </div><!--/ac-->
+
+
+
+<!-- MEMBERS -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -190,7 +756,11 @@
 
     </article><!--/ac-text-->
 
-  </div><!--/ac-->
+  </div><!--/ac--><!-- BUDGETS -->
+
+
+
+<!-- MEMBERS -->
 
 
 
