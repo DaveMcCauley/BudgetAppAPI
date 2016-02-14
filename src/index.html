@@ -506,7 +506,7 @@
       </div> <!-- budget/{id}/myPrefs/ -->
 
 
-<!-- budgets/{id}/organization -->
+<!-- GET budgets/{id}/organization -->
 
 
       <div class="ac-sub get">
@@ -585,7 +585,652 @@
             </div>
           </div>
         </article>
-      </div> <!-- budget/{id}/organization/ -->
+      </div> <!-- GET budget/{id}/organization/ -->
+
+
+<!-- PUT budgets/{id} -->
+
+
+      <div class="ac-sub put">
+        <input class="ac-input" id="ac-budget.put" name="ac-budget.put" type="checkbox" />
+        <label class="ac-label" for="ac-budget.put"><span class="opcode">PUT</span>budgets/{id}/</label>
+        <article class="ac-sub-text">
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>name</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">updates the budget name field</div>
+            <div class="param data">>string with length from 1 to 16384</div>
+            <div class= "param default">[none]</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">desc</div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">updates the budget description</div>
+            <div class="param data">string with length from 0 to 16384</div>
+            <div class="param default">[none]</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">closed</div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">sets project status</div>
+            <div class="param data"><ul><li>true</li><li>false</li></ul></div>
+            <div class="param default">[none]</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">idOrganization</div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">sets the oranizations id</div>
+            <div class="param data">a string with a length from 0 to 16384</div>
+            <div class="param default">[none]</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">starred</div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">sets starred toggle for user</div>
+            <div class="param data"><ul><li>true</li><li>false</li></ul></div>
+            <div class="param default">[none]</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">prefs/permissionLevel</div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">sets starred toggle for user</div>
+            <div class="param data"><u>One of:</u><ul><li>org</li><li>private</li><li>public</li></ul></div>
+            <div class="param default">[none]</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">prefs/comments</div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">sets comments permission</div>
+            <div class="param data"><u>One of:</u><ul><li>disabled</li><li>members</li><li>org</li><li>public</li></ul></div>
+            <div class="param default">[none]</div>
+          </div>
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">The requested field was updated.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested fields.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Returned if some of the parameters failed to update because one or
+              more arguments contained invalid data that could not pass validation.
+              The caller can check the returned json/application to which argument(s)
+              failed.
+              <div class="json example">
+                <div>"failedArgs": [
+                  <div>{
+                    <div>"desc": "invalid data type",</div>
+                    <div>"closed": "invalid data type"</div>
+                  }</div>
+                ]</div>
+              </div>
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- PUT budget/{id} -->
+
+
+<!-- PUT budgets/{id}/closed -->
+
+
+      <div class="ac-sub put">
+        <input class="ac-input" id="ac-budget.put-closed" name="ac-budget.put-closed" type="checkbox" />
+        <label class="ac-label" for="ac-budget.put-closed"><span class="opcode">PUT</span>budgets/{id}/closed</label>
+        <article class="ac-sub-text">
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">value</div>
+            <div class="param reqd">required</div>
+            <div class="param desc">set the value. Own or write permission required</div>
+            <div class="param data"><ul><li>true</li><li>false</li></ul></div>
+            <div class="param default">[none]</div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">The budget is set to closed.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Bad Request. User supplied invalid data type for the value.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Unauthorized. Returned if the user is authenticated, but lacks the required permission
+              to make this change.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- PUT budget/{id}/closed -->
+
+
+<!-- PUT budgets/{id}/description -->
+
+
+      <div class="ac-sub put">
+        <input class="ac-input" id="ac-budget.put-description" name="ac-budget.put-description" type="checkbox" />
+        <label class="ac-label" for="ac-budget.put-description"><span class="opcode">PUT</span>budgets/{id}/description</label>
+        <article class="ac-sub-text">
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">value</div>
+            <div class="param reqd">required</div>
+            <div class="param desc">Sets the budgets description</div>
+            <div class="param data">a string with a length from 0 to 16384</div>
+            <div class="param default">[none]</div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">Accepted. The budget descripton was updated.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Bad Request. User supplied invalid data type for the value.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Unauthorized. Returned if the user is authenticated, but lacks the required permission
+              to make this change.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- PUT budget/{id}/description -->
+
+
+<!-- PUT budgets/{id}/members -->
+
+
+      <div class="ac-sub put">
+        <input class="ac-input" id="ac-budget.put-members" name="ac-budget.put-members" type="checkbox" />
+        <label class="ac-label" for="ac-budget.put-members"><span class="opcode">PUT</span>budgets/{id}/members</label>
+        <article class="ac-sub-text">
+
+          <h1>Implementation Note</h1>
+          <div class="response-row">
+            <div class= "response status"><div class="pill warn">NOTE!</div></div>
+            <div class="response note">This method is used for non-existing users. It
+              will create the user, and add them to the budget's membership list.  To
+              add an existing user... use method /budgets/{id}/members/{id}
+            </div>
+          </div>
+
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">email</div>
+            <div class="param reqd">required</div>
+            <div class="param desc">User's email</div>
+            <div class="param data">an email address</div>
+            <div class="param default">[none]</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">fullName</div>
+            <div class="param reqd">required</div>
+            <div class="param desc">User's email</div>
+            <div class="param data">A string with a length of at least 1. Cannot begin or end with a space.</div>
+            <div class="param default">[none]</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">type</div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">User type for the new membre</div>
+            <div class="param data"><u>One of:</u>
+                <ul>
+                  <li>admin</li><li>normal</li><li>observer</li>
+                </ul>
+            </div>
+            <div class="param default">[none]</div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">Accepted. The created and made a member of budget.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Bad Request. User supplied invalid data for the name, email, or type.
+              The result will show which field(s) failed.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Unauthorized. Returned if the user is authenticated, but lacks the required permission
+              to make this change.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- PUT budget/{id}/members/ -->
+
+
+<!-- PUT budgets/{id}/members/{id} -->
+
+
+      <div class="ac-sub put">
+        <input class="ac-input" id="ac-budget.put-members.id" name="ac-budget.put-members.id" type="checkbox" />
+        <label class="ac-label" for="ac-budget.put-members.id"><span class="opcode">PUT</span>budgets/{id}/members/{idMember}</label>
+        <article class="ac-sub-text">
+
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">idMember</div>
+            <div class="param reqd">required</div>
+            <div class="param desc">The ID of a member to be added to the budget</div>
+            <div class="param data">any user id</div>
+            <div class="param default">[none]</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">type</div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">User type for the new membre</div>
+            <div class="param data"><u>One of:</u>
+                <ul>
+                  <li>admin</li><li>normal</li><li>observer</li>
+                </ul>
+            </div>
+            <div class="param default">[none]</div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">Accepted. The member was added.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Bad Request. User supplied invalid data type for the id or type.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Unauthorized. Returned if the user is authenticated, but lacks the required permission
+              to make this change.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- PUT budget/{id}/members/{memberId} -->
+
+
+<!-- PUT budgets/{id}/name -->
+
+
+      <div class="ac-sub put">
+        <input class="ac-input" id="ac-budget.put-name" name="ac-budget.put-name" type="checkbox" />
+        <label class="ac-label" for="ac-budget.put-name"><span class="opcode">PUT</span>budgets/{id}/name</label>
+        <article class="ac-sub-text">
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">value</div>
+            <div class="param reqd">required</div>
+            <div class="param desc">Sets the budgets name</div>
+            <div class="param data">a string with a length from 0 to 16384</div>
+            <div class="param default">[none]</div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">Accepted. The budget name was updated.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Bad Request. User supplied invalid data for the value field.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Unauthorized. Returned if the user is authenticated, but lacks the required permission
+              to make this change.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Not Found. Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- PUT budget/{id}/name -->
+
+
+<!-- PUT budgets/{id}/prefs/comments -->
+
+
+      <div class="ac-sub put">
+        <input class="ac-input" id="ac-budget.put-prefs.comments" name="ac-budget.put-prefs.comments" type="checkbox" />
+        <label class="ac-label" for="ac-budget.put-prefs.comments"><span class="opcode">PUT</span>budgets/{id}/prefs/comments</label>
+        <article class="ac-sub-text">
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">value</div>
+            <div class="param reqd">required</div>
+            <div class="param desc"> Sets the member type that is allowed to
+              place comments on the budget.
+            </div>
+            <div class="param data"><u>One of:</u>
+              <ul>
+                <li>disabled</li>
+                <li>members</li>
+                <li>observers</li>
+                <li>org</li>
+                <li>public</li>
+              </ul>
+            </div>
+            <div class="param default">[none]</div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">Accepted. The budget comment preference was updated.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Bad Request. User supplied invalid data for the value field.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Unauthorized. Returned if the user is authenticated, but lacks the required permission
+              to make this change.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Not Found. Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- PUT budget/{id}/prefs/comments -->
+
+
+<!-- PUT budgets/{id}/prefs/invitations -->
+
+
+      <div class="ac-sub put">
+        <input class="ac-input" id="ac-budget.put-prefs.invitations" name="ac-budget.put-prefs.invitations" type="checkbox" />
+        <label class="ac-label" for="ac-budget.put-prefs.invitations"><span class="opcode">PUT</span>budgets/{id}/prefs/invitations</label>
+        <article class="ac-sub-text">
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">value</div>
+            <div class="param reqd">required</div>
+            <div class="param desc"> Sets the member type that is allowed to
+              invite others onto the budget.
+            </div>
+            <div class="param data"><u>One of:</u>
+              <ul>
+                <li>admins</li>
+                <li>members</li>
+              </ul>
+            </div>
+            <div class="param default">[none]</div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">Accepted. The budget invitation preference was updated.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Bad Request. User supplied invalid data for the value field.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Unauthorized. Returned if the user is authenticated, but lacks the required permission
+              to make this change.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Not Found. Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- PUT budget/{id}/prefs/invitations -->
+
+
+<!-- PUT budgets/{id}/prefs/permissions -->
+
+
+      <div class="ac-sub put">
+        <input class="ac-input" id="ac-budget.put-prefs.permission" name="ac-budget.put-prefs.permission" type="checkbox" />
+        <label class="ac-label" for="ac-budget.put-prefs.permission"><span class="opcode">PUT</span>budgets/{id}/prefs/permissions</label>
+        <article class="ac-sub-text">
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">value</div>
+            <div class="param reqd">required</div>
+            <div class="param desc"> Sets the viewing and editing permission level
+              for the budget.
+            </div>
+            <div class="param data"><u>One of:</u>
+              <ul>
+                <li>org</li>
+                <li>private</li>
+                <li>public</li>
+              </ul>
+            </div>
+            <div class="param default">[none]</div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">Accepted. The budget permission preference was updated.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Bad Request. User supplied invalid data for the value field.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Unauthorized. Returned if the user is authenticated, but lacks the required permission
+              to make this change.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Not Found. Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- PUT budget/{id}/prefs/invitations -->
+
+
+<!-- PUT budgets/{id}/subscriptions -->
+
+
+      <div class="ac-sub put">
+        <input class="ac-input" id="ac-budget.put-subscriptions" name="ac-budget.put-subscriptions" type="checkbox" />
+        <label class="ac-label" for="ac-budget.put-subscriptions"><span class="opcode">PUT</span>budgets/{id}/subscriptions</label>
+        <article class="ac-sub-text">
+
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name">value</div>
+            <div class="param reqd">required</div>
+            <div class="param desc">Sets whether or not the logged-in user is subscribed to the budget.
+            </div>
+            <div class="param data">
+              <ul>
+                <li>true</li>
+                <li>false</li>
+              </ul>
+            </div>
+            <div class="param default">[none]</div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">Accepted. The budget subscription was updated.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Bad Request. User supplied invalid data for the value field.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Unauthorized. Returned if the user is authenticated, but lacks the required permission
+              to make this change.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Not Found. Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- PUT budget/{id}/subscriptons -->
 
 
 <!-- DELETE budgets/{id} -->
