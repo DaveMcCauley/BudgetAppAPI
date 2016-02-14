@@ -1,446 +1,285 @@
-$headerTextSize: 16px;
-$baseTextSize:   14px;
-$smallTextSize:  13px;
-$opTextSize:     11px;
-$codeTextSize:   11px;
+$header-text-size:    16px;
+$base-text-size:      14px;
+$small-text-size:     13px;
+$operator-text-size:  11px;
 
-$regBlack: rgb(51,51,51);
-$regWhite: rgb(230,230,230);
-$regGray:  rgb(120,120,120);
-$regLtGray: rgb(210,210,210);
 
-$colorPOSTbg:      rgb(231, 246, 236);
-$colorPOSTfeat:    rgb(16, 165, 74);
-$colorPOSTborder:  rgb(195,232,209);
-$colorPOSTrev:     rgb(250,250,250);
+// Color definitions
+$reg-black:           rgb(51, 51, 51);
+$reg-white:           rgb(230, 230, 230);
+$reg-gray:            rgb(120, 120, 120);
+$reg-gray-lt:         rgb(210, 210, 210);
 
-$colorPUTbg:      rgb(249,242,233);
-$colorPUTfeat:    rgb(197,134,43);
-$colorPUTborder:  rgb(240,224,202);
-$colorPUTrev:     rgb(250,250,250);
+$color-operator:      rgb(250, 250, 250);
 
-$colorGETbg:      rgb(231,240,247);
-$colorGETfeat:    rgb(15,106,180);
-$colorGETborder:  rgb(195,217,236);
-$colorGETrev:     rgb(250,250,250);
 
-$colorDELETEbg:     rgb(245,232,232);
-$colorDELETEfeat:   rgb(164,30,34);
-$colorDELETEborder: rgb(232,198,199);
-$colorDELETErev:    rgb(250,250,250);
+// code styling defintions
+$code-color-bg:       rgb(250, 250, 250);
+$code-color-font:     rgb(23, 0, 235);
+$code-text-size:      16px;
 
-$borderRadius: 5px;
-$borderWidth:  1px;
 
-$color-json-bg:       rgb(250,250,250);
-$color-json-property: rgb(85,85,170);
-$font-json-size:      13px;
+// definitions for the parameter table
+$param-border-width:      1px;
+$param-border-width-head: 1px;
+$param-color-border:      rgb(204, 204, 204);
+$param-color-border-head: $reg-gray;
+$param-color-font:        $reg-black;
+$param-color-font-head:   $reg-gray;
+$param-font-weight:       600;
+$param-text-size:         14px;
+$param-text-size-head:    12px;
 
-$normal-font-stack: "Helvetica Neue",Helvetica,Arial,sans-serif;
-$code-font-stack:   Menlo,Monaco,Consolas,"Courier New",monospace;
+
+// define colors for the HTML verbs
+$post-color-bg:       rgb(231, 246, 236);
+$post-color-fg:       rgb(16, 165, 74);
+$color-post-border:   rgb(195, 232, 209);  //TODO: FIX THIS!!
+
+$put-color-bg:        rgb(249, 242, 233);
+$put-color-fg:        rgb(197, 134, 43);
+$put-color-border:    rgb(240, 224, 202);
+
+$get-color-bg:        rgb(231, 240, 247);
+$get-color-fg:        rgb(15, 106, 180);
+$get-color-border:    rgb(195, 217, 236);
+
+$delete-color-bg:     rgb(245, 232, 232);
+$delete-color-fg:     rgb(164, 30, 34);
+$delete-color-border: rgb(232, 198, 199);
+
+
+// special definitions for opcode (HTML Verb) pills
+$opcode-border-radius: 6px;
+$opcode-font-color:    $reg-white;
+$opcode-font-size:     11px;
+$opcode-font-weight:   600;
+$opcode-height:        18px;
+$opcode-width:         50px;
+
+
+// special definitions for return code pills
+$pill-border-radius:    6px;
+$pill-color-err:        rgb(208, 68, 55);
+$pill-color-ok:         rgb(20, 137, 44);
+$pill-color-warn:       rgb(255, 168, 0);
+$pill-color-text:       $reg-white;
+$pill-color-text-warn:  $reg-black;
+$pill-font-size:        11px;
+$pill-font-size-warn:   12px;
+$pill-font-weight:      600;
+$pill-height:           20px;
+$pill-width:            75px;
+$pill-padding-top:      6px;
+
+
+// route content defintions
+$subtext-font-size-h1:   1em;
+$subtext-font-weight-h1: 600;
+
+
+// special definitions for json code display
+$json-color-border:     rgb(210, 210, 210);
+$json-color-bg:         rgb(240, 240, 240);
+$json-color-property:   rgb(0, 4, 100);
+$json-font-size:        14px;
+$json-font-size-before: 13px;
+$json-font-weight:      500;
+
+
+// font stacks for consistency
+$normal-font-stack: 'Source Sans Pro', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$code-font-stack:   Menlo, Monaco, Consolas, 'Courier New', monospace;
+
+
+// definition for the framework
+$ac-label-hover:    #999;
+$ac-label-after:    #e5e5e5;
+$ac-input-checked:  #b5b5b5;
+$ac-whitesmoke:     #f5f5f5;
+
+
+
+
+//
+//
+//  SECTION 1 -- General definions
+//
+//
+
 
 html {
   overflow-y: scroll;
 }
 
-ul,
-li {
-  list-style: none;
-  padding-left: 0;
-}
-
-// TODO REMOVE
-table {
-  margin: 0 10px 0;
-  font-weight: 500;
-}
-
-// TODO: DELETE THIS NO LONGER ISING TABLES>
-thead {
-  border-bottom-style: solid;
-  border-color: $regLtGray;
-  border-bottom-width: 1px;
-  color: $regGray;
-  font-size: $opTextSize;
-}
-
-// TODO REMOVE
-tbody {
-  color: $regBlack;
-  font-size: $baseTextSize;
-}
-
-// TODO REMOVE
-td {
-  padding-top: 0;
-  padding-bottom:4px;
-}
-
-// TODO REMOVE
-td:first-child {
-  padding-top: 4px;
-}
-
-// TODO REMOVE
-li.resource-item:not(:first-child) {
-  border-top-color: $regLtGray;
-  border-top-style: solid;
-  border-top-width: 1px;
-  padding-top: 10px;
-}
-
-.resource-heading {
-  color: $regGray;
-  font-size: $headerTextSize;
-  font-weight: bold;
-  overflow: auto;
-  margin-bottom: 10px;
-}
-
-.resource-heading a {
-  color: $regBlack;
-}
-
-.resource-ctrls a {
-  font-size: $baseTextSize;
-  font-weight: normal;
-}
-
-.listops {
-	display: inline-block;
-	text-align: center;
-	width: 8.1em;
-}
-
-.expandops {
-	display: inline-block;
-	text-align: center;
-	width: 6em;
-}
-.endpoint-heading {
-  border-style: solid;
-  border-width: $borderWidth;
-  border-color: inherit;
-  margin-bottom: 10px;
-}
-
-.operator {
-  border-radius: $borderRadius;
-  display: inline-block;
-  font-size: $opTextSize;
-  font-weight: bold;
-  padding-top: 7px;
-  text-align: center;
-  width: 50px;
-  height: 30px;
-}
-
-a:link.operator,
-a:visited.operator,
-a:hover.operator,
-a:active.operator {
-  text-decoration: none;
-}
-
-
-.endpoint-path {
-  font-size: $baseTextSize;
-  padding-top: 5px;
-  margin-left: 10px;
-}
-
-a.endpoint-path {
- color: $regBlack;
- font-weight: 700;
-}
-
-.endpoint-desc {
- padding-top: 5px;
- margin-right: 10px;
-}
-
-/* NOTE: .collapse does not like padding on the
-   animated div. Don't do it, or will look wonky */
-.endpoint-content {
-  border-color: inherit;
-  border-style: solid;
-  border-width: 1px;
-	margin-bottom: 10px;
-  margin-top: -11px;
-}
-
-.endpoint-content h1 {
-	font-size: $baseTextSize;
-	margin-left: 10px;
-}
-
-.endpoint-content h2 {
-	color: $regGray;
-	font-size: $smallTextSize;
-	margin-left: 10px;
-}
-
-
-/*
- * styling for the POST operator type
- */
-
-.post {
-  background-color: $colorPOSTbg;
-  border-color: $colorPOSTborder;
-}
-
-.post .operator {
-  color: $colorPOSTrev;
-  background-color: $colorPOSTfeat;
-}
-
-.post .endpoint-desc {
-  color: $colorPOSTfeat;
-}
-
-.post .endpoint-content h1 {
-	color:$colorPOSTfeat;
-}
-
-.post .endpoint-path {
-  color: $colorPOSTfeat;
-}
-
-/*
- * styling for the PUT operator type
- */
-
-.put {
-  background-color: $colorPUTbg;
-  border-color: $colorPUTborder;
-}
-
-.put .operator {
-  color: $colorPUTrev;
-  background-color: $colorPUTfeat;
-}
-
-.put .endpoint-desc {
-  color: $colorPUTfeat;
-}
-
-.put .endpoint-content h1 {
-  color: $colorPUTfeat;
-}
-
-.put .endpoint-path {
-  color: $colorPUTfeat;
-}
-
-/*
- * styling for the GET operator type
- */
-
-.get {
-  background-color: $colorGETbg;
-  border-color: $colorGETborder;
-}
-
-.get .operator {
-  color: $colorGETrev;
-  background-color: $colorGETfeat;
-}
-
-.get .endpoint-desc {
-  color: $colorGETfeat;
-}
-
-.get .endpoint-content h1 {
-  color: $colorGETfeat;
-}
-
-.get .endpoint-path {
-  color: $colorGETfeat;
-}
-
-/*
- * styling for the DELETE operator type
- */
-
-.delete {
-  background-color: $colorDELETEbg;
-  border-color: $colorDELETEborder;
-}
-
-.delete .operator {
-  color: $colorDELETErev;
-  background-color: $colorDELETEfeat;
-}
-
-.delete .endpoint-desc {
-  color: $colorDELETEfeat;
-}
-
-.delete .endpoint-content h1 {
-  color: $colorDELETEfeat;
-}
-
-.delete .endpoint-path {
-  color: $colorDELETEfeat;
-}
-
-/*
- * These are the return lozenges
- */
-
-// TODO REMOVE.
-.return {
-  border-radius: 3px;
-  color: $regWhite;
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  padding-top: 0;
-  text-align: center;
-  width: 75px;
-  height: 16px;
-}
-
-/*
- * these are my lozenge classes
- */
-
-.ok {
-  background-color: rgb(20,137,44);
-  border-radius: 3px;
-  color: $regWhite;
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  height: 16px;
-  padding-top: 0;
-  text-align: center;
-  width: 75px;
-}
-
-.err {
-  background-color: rgb(208,68,55);
-  border-radius: 3px;
-  color: $regWhite;
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  height: 16px;
-  padding-top: 0;
-  text-align: center;
-  width: 75px;
-}
-
-.loznote {
-  background-color: rgb(255,168,0);
-  border-radius: 3px;
-  color: $regBlack;
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  height: 16px;
-  padding-top: 0;
-  text-align: center;
-  width: 75px;
-}
-
-
-/*
- * My JSON styling. Provides indentation,
- * a background, and monospaced font stack. NOTE: the font
- * stack is based on bootstrap.min.css:5. This could change
- * so if re update the bootstrap... check this.
- */
-
-.json {
-  background-color: $color-json-bg;
-  border-width: 1px;
-  border-color: $regLtGray;
-  border-style: solid;
-  display: inline-block;
-  font-family: $code-font-stack;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  padding: 5px;
-}
-
-.json div {
-  margin-left: 10px;
-  color: $regBlack;
-  font-size: 13px;
-  font-weight: 500;
-  background-color: inherit;
-}
-
-/*
- * separate style for data models.
- */
-.json-model {
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  padding: 5px;
-}
-.json-model div {
-  margin-left: 10px;
-  font-size: $font-json-size;
-  font-weight: 500;
-}
-
-.json.example {
-  position: relative;
-  margin-top: 25px;
-  margin-left: 0;
-}
-
-.json.example::before {
-  color: $regBlack;
-  content: "Example";
+body {
   font-family: $normal-font-stack;
-  font-size: $smallTextSize;
+}
+
+h1 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+h3 {
+  font-weight: 300;
+  margin-top: 0;
+}
+
+//
+//
+// SECTION 2 -- Display framework providing an all css expansion and folding
+//              method. No bootstrap. No js. No bs.
+//
+
+.container {
+  margin: 10px auto;
+  width: 60em;
+}
+
+.ac-label {
+  background-color: $ac-whitesmoke;
+  cursor: pointer;
+  display: block;
   font-weight: 700;
-  left: -0px;
+  margin-bottom: .5em;
+  padding: .5em 1em;
+  position: relative;
+  transition: background-color .25s ease-in-out;
+}
+
+.ac-input:checked + label,
+.ac-label:hover {
+  background-color: $ac-label-hover;
+}
+
+.ac-label:after,
+.ac-input:checked + .ac-label:after {
+  background-color: $ac-label-after;
+  content: '+';
+  display: block;
+  height: 100%;
+  line-height: 2.25em;
   position: absolute;
-  text-transform: uppercase;
-  top: -20px;
+  right: 0;
+  text-align: center;
+  top: 0;
+  transition: background-color .15s ease-in-out;
+  width: 2em;
 }
 
-.propName {
-  color: $regBlack;
-  font-weight: 700;
+.ac-label:hover:after,
+.ac-input:checked + .ac-label:after {
+  background-color: $ac-input-checked;
 }
 
-.propType {
-  color: $color-json-property;
-  font-weight: 500;
-
-}
-.propOpt {
-  color: $regBlack;
-  font-style: italic;
+.ac-input:checked + .ac-label:after {
+  content: '-';
 }
 
-/*
- * styling for the parameter/argument lists
- */
+.ac-input {
+  display: none;
+}
 
-.param-item {
-  display: table;
-  width: 100%;
+.ac-text,
+.ac-sub-text {
+  height: 0;
+  margin-bottom: .5em;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity .5s ease-in-out;
+}
+
+.ac-input:checked ~ .ac-text,
+.ac-sub .ac-input:checked ~ .ac-sub-text {
+  height: auto;
+  opacity: 1;
+}
+
+.ac-sub .ac-label {
+  background: none;
+  font-weight: 600;
+  margin-bottom: 0;
+  padding: .5em 2em;
+}
+
+.ac-sub .ac-label:checked {
+  background: none;
+  border-bottom: 1px solid $ac-whitesmoke;
+}
+
+.ac-sub .ac-label:after,
+.ac-sub .ac-input:checked + .ac-label:after {
+  background: none;
+  left: 0;
+}
+
+.ac-sub .ac-input:checked + label,
+.ac-sub .ac-label:hover {
+  background: none;
+}
+
+.ac-sub-text {
+  padding: 0 1em 0 2em;
+}
+
+
+//
+//
+//  SECTION X -- Common elements
+//
+//
+.opcode {
+  border-radius: $opcode-border-radius;
+  color: $opcode-font-color;
+  display: inline-block;
+  font-size: $opcode-font-size;
+  font-weight: $opcode-font-weight;
+  height: $opcode-height;
+  margin-right: 10px;
+  padding-top: 4px;
+  text-align: center;
+  width: $opcode-width;
+}
+
+.ac-sub-text h1 {
+  font-size: $subtext-font-size-h1;
+  font-weight: $subtext-font-weight-h1;
+}
+
+
+//
+//
+//  SECTION X -- Parameter table styling
+//
+//
+
+.param-row {
+  display: table-row;
+  padding: 0 10px;
   table-layout: fixed;
-  padding: 0 10px 0;
+  width: 100%;
 }
 
 .param {
-  display: table-cell;
-  vertical-align: top;
-  padding: 5px 20px 5px 0;
-  font-size: $baseTextSize;
   border-bottom-style: solid;
-  border-color: #cccccc;
-  border-width: 1px;
+  border-color: $param-color-border;
+  border-width: $param-border-width;
+  display: table-cell;
+  font-size: $param-text-size;
+  padding: 5px 20px 5px 0;
+  vertical-align: top;
+}
+
+.head {
+  border-bottom-style: solid;
+  border-bottom-width: $param-border-width-head;
+  border-color: $param-color-border-head;
+  color: $param-color-font-head;
+  font-family: $normal-font-stack;
+  font-size: $param-text-size-head;
+  font-weight: $param-font-weight;
+  padding-top: 10px;
 }
 
 .param ul,
@@ -450,7 +289,16 @@ a.endpoint-path {
 
 .name {
   width: 15%;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.name p {
+  background-color: $code-color-bg;
+  color: $code-color-font;
+  display: inline;
+  font-family: $code-font-stack;
+  font-size: $code-text-size;
+  margin: 0;
+  padding: 0 3px;
 }
 
 .reqd {
@@ -469,68 +317,201 @@ a.endpoint-path {
   width: 15%;
 }
 
-.head {
-  border-color: #b3b3b3; // TODO REMOVE OR CONFIRM
-  border-color: $regGray;
-  // border-width: 0;  // REMOVE IF I DON'T NEED
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  color: $regGray;
-  font-family: $normal-font-stack;
-  font-size: $opTextSize;
-  font-weight: 700;
-  padding: 0;
-}
 
-/*
- * Response codes and descriptions
- */
+//
+//
+//  SECTION Y -- Styling for the response tables
+//
+//
 
-.response-item {
-  display: table;
-  /*max-width: 600px;*/
-  padding: 0 10px 0;
+.response-row {
+  display: table-row;
+  //max-width: 600px;
+  padding: 0 10px;
   table-layout: fixed;
   width: 100%;
 }
 
 .response {
   display: table-cell;
+  font-size: $base-text-size;
+  padding: 15px 20px 5px 0;
   vertical-align: top;
-  padding: 0 20px 5px 0;
-  font-size: 14px;
 }
 
-.opcode {
-  font-size: $opTextSize;
+.response .status {
+  width: 20%;
+}
+
+
+.response .note {
+  padding-left: 0;
+  width: 80%;
+}
+
+
+
+//
+//
+//  SECTION Z -- Sytling for the return status pills
+//
+//
+
+.pill {
+  border-radius: $pill-border-radius;
+  color: $pill-color-text;
+  display: inline-block;
+  font-size: $pill-font-size;
+  font-weight: $pill-font-weight;
+  height: $pill-height;
+  padding-top: $pill-padding-top;
+  text-align: center;
+  width: $pill-width;
+
+}
+
+.pill.ok {
+  background-color: $pill-color-ok;
+}
+
+.pill.err {
+  background-color: $pill-color-err;
+}
+
+.pill.warn {
+  background-color: $pill-color-warn;
+  color: $pill-color-text-warn;
+  font-size: $pill-font-size-warn;
+}
+
+.warn-note {
+  display: inline-block;
+  padding-left: 20px;
+}
+
+
+//
+//
+//  SECTION AA -- json styling for examples within content sections
+//
+//
+
+
+.json {
+  background-color: $json-color-bg;
+  border-width: 1px;
+  border-color: $json-color-border;
+  border-style: solid;
+  display: inline-block;
+  font-family: $code-font-stack;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px; }
+
+.json div {
+  margin-left: 10px;
+  color: $json-color-property;
+  font-size: $json-font-size;
+  font-weight: $json-font-weight;
+  background-color: inherit; }
+
+.json.example {
+  position: relative;
+  margin-top: 35px;
+  margin-left: 0;
+  max-width: 85%;
+  display: block;
+}
+
+.json.example::before {
+  color: $reg-black;
+  content: 'Example';
+  font-family: $normal-font-stack;
+  font-size: $json-font-size-before;
   font-weight: 700;
-  padding-top: 4px;
-  width: 75px;
-  vertical-align: top;
-}
-.note {
-  padding-left: 20px;
+  left: -0px;
+  position: absolute;
+  text-transform: uppercase;
+  top: -20px; }
+
+
+//
+//
+//  SECTION 4 -- Styling for the POST server routes.
+//
+//
+
+
+.post {
+  background-color: $post-color-bg;
 }
 
-/*
- * Styling for impletemtation notes
- */
-
-.impnote {
-  color: $regBlack;
-  padding-left: 20px;
+.post .opcode {
+  background-color: $post-color-fg;
 }
 
-.impnote-table {
-  display: table;
-  padding: 0 10px 0;
-  table-layout: fixed;
-  width: 100%
+.post .ac-sub-text h1 {
+  color: $post-color-fg;
 }
 
-.impnote-item {
-  display: table-cell;
-  vertical-align: top;
-  padding: 0 20px 5px 0;
-  font-size: 14px;
+//
+//
+//  SECTION 5 -- Styling for the GET server routes.
+//
+//
+
+.get {
+  background-color: $get-color-bg;
 }
+
+.get .opcode {
+  background-color: $get-color-fg;
+}
+
+.get .ac-sub-text h1 {
+  color: $get-color-fg;
+}
+
+//
+//
+//  SECTION 7 -- Styling for the put server routes.
+//
+//
+
+.put {
+  background-color: $put-color-bg;
+}
+
+.put .opcode {
+  background-color: $put-color-fg;
+}
+
+.put .ac-sub-text h1 {
+  color: $put-color-fg;
+}
+
+//
+//
+//  SECTION 8 -- Syling for the DELETE server routes
+//
+//
+
+.delete {
+  background-color: $delete-color-bg;
+}
+
+.delete .opcode {
+  background-color: $delete-color-fg;
+}
+
+.delete .ac-sub-text h1 {
+  color: $delete-color-fg;
+}
+
+
+
+
+
+
+
