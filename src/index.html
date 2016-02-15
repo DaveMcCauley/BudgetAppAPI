@@ -1327,85 +1327,540 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <div class="ac">
 
     <input class="ac-input" id="ac-4" name="ac-4" type="checkbox" />
     <label class="ac-label" for="ac-4">members/</label>
 
     <article class="ac-text">
+      <p>Members are not the same as users. Users must be first created on the
+         public website. After they are confirmed they are created as members.
+         This prevents public having unlimited access to create memebers, etc.
+      </p>
+      <p>
+         Also note... user email is not visible via the member API. This is hides
+         the member's email from potentially public budgets. We dont' want to
+         expose that. Thus, the user's email is handeled through the private
+         user managment facilities.
+      </p>
+      <p>
+         Thus, the member routes are based on a static members collection. The
+         fields such as PUT, POST, etc operate on the attributes of the supplied
+         idMember, username, or the id of the authentication token.
+      </p>
+
+
+<!-- GET members/{id or username}/ -->
+
+
+      <div class="ac-sub get">
+        <input class="ac-input" id="ac-members.get" name="ac-members.get" type="checkbox" />
+        <label class="ac-label" for="ac-members.get"><span class="opcode">GET</span>members/{idMember or username}/</label>
+        <article class="ac-sub-text">
+          <h1>Implementation Notes</h1>
+          If you specify me as the username, this call will respond as if you had supplied the username associated
+          with the supplied token
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>actions</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">returns a list of the user's actions filtered
+              by the supplied comma delimited list.</div>
+            <div class="param data">all or a comma separated list of:
+              <ul>
+                <li>addAttachmentToLine</li>
+                <li>addMemberToBoard</li>
+                <li>createBoard</li>
+                <li>createOrganization</li>
+              </ul>
+              TODO: finish out this list! It basically defines the application!!
+            </div>
+            <div class= "param default">all</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>actions_limit</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">limits the number of actions returned</div>
+            <div class="param data">a number from 0 to 1000.
+            </div>
+            <div class= "param default">50</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>action_since</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">filters the actions returned to only actions
+              since the supplied date
+            </div>
+            <div class="param data">A date, null or lastView
+            </div>
+            <div class= "param default">all</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>action_before</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">filters the actions returned to only those
+              that were entered before the supplied date.
+            </div>
+            <div class="param data">A date, or null.
+            </div>
+            <div class= "param default">[none]</div>
+          </div>
+          <div class= "param-row">
+            <div class="param name"><p>bio</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">The user's biogrpahical information"</div>
+            <div class="param data">a string with a length from 1 to 16384.</div>
+            <div class="param default">[none]</div>
+          </div>
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">The requested field was updated.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested fields.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Returned if some of the parameters failed to update because one or
+              more arguments contained invalid data that could not pass validation.
+              The caller can check the returned json/application to which argument(s)
+              failed.
+              <div class="json example">
+                <div>"failedArgs": [
+                  <div>{
+                    <div>"desc": "invalid data type",</div>
+                    <div>"closed": "invalid data type"</div>
+                  }</div>
+                ]</div>
+              </div>
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- POST members/{id}/ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- PUT members/{id or username}/ -->
+
 
       <div class="ac-sub put">
-        <input class="ac-input" id="ac-5" name="ac-5" type="checkbox" />
-        <label class="ac-label" for="ac-5"><span class="opcode">PUT</span>members/{id}</label>
+        <input class="ac-input" id="ac-members.put" name="ac-members.put" type="checkbox" />
+        <label class="ac-label" for="ac-members.put"><span class="opcode">PUT</span>members/{id or username}/</label>
         <article class="ac-sub-text">
-					<p>But not only is the sea such a foe to man who is an alien to it,
-					   but it is also a fiend to its own off-spring; worse than the
-						 Persian host who murdered his own guests; sparing not the
-						 creatures which itself hath spawned. Like a savage tigress that
-						 tossing in the jungle overlays her own cubs, so the sea dashes
-						 even the mightiest whales against the rocks, and leaves them
-						 there side by side with the split wrecks of ships. No mercy,
-						 no power but its own controls it. Panting and snorting like a
-						 mad battle steed that has lost its rider, the masterless ocean
-						 overruns the globe.
-					</p>
-					<p>Consider the subtleness of the sea; how its most dreaded creatures
-					   glide under water, unapparent for the most part, and treacherously
-						 hidden beneath the loveliest tints of azure. Consider also the
-						 devilish brilliance and beauty of many of its most remorseless
-						 tribes, as the dainty embellished shape of many species of sharks.
-						 Consider, once more, the universal cannibalism of the sea; all
-						 whose creatures prey upon each other, carrying on eternal war
-						 since the world began.
-					</p>
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>avatar</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">avatars must be a valid file on the database. </div>
+            <div class="param data">a valid file id.
+            </div>
+            <div class= "param default">[none]</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>fullName</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">a valid file name. </div>
+            <div class="param data">a string with a length from 0 to 16384. Cannot begin
+              or end with a space.
+            </div>
+            <div class= "param default">[none]</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>initials</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">a valid file name. </div>
+            <div class="param data">a string with a length from 1 to 4. Cannot begin
+              or end with a space.
+            </div>
+            <div class= "param default">[none]</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>username</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">user's login name.</div>
+            <div class="param data">string with a length of at least 3. Only lowercase
+              letters, underscores, and numbers are allowed. Must be unique.
+            </div>
+            <div class= "param default">[none]</div>
+          </div>
+          <div class= "param-row">
+            <div class="param name"><p>bio</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">The user's biogrpahical information"</div>
+            <div class="param data">a string with a length from 1 to 16384.</div>
+            <div class="param default">[none]</div>
+          </div>
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">The requested field was updated.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested fields.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Returned if some of the parameters failed to update because one or
+              more arguments contained invalid data that could not pass validation.
+              The caller can check the returned json/application to which argument(s)
+              failed.
+              <div class="json example">
+                <div>"failedArgs": [
+                  <div>{
+                    <div>"desc": "invalid data type",</div>
+                    <div>"closed": "invalid data type"</div>
+                  }</div>
+                ]</div>
+              </div>
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
         </article>
-      </div>
+      </div> <!-- POST members/{id}/ -->
 
-      <div class="ac-sub delete">
-        <input class="ac-input" id="ac-6" name="ac-6" type="checkbox" />
-        <label class="ac-label" for="ac-6"><span class="opcode">DELETE</span>members/{id}</label>
+
+<!-- PUT members/{id or username}/avatar -->
+
+
+      <div class="ac-sub put">
+        <input class="ac-input" id="ac-members.put-avatar" name="ac-members.put-avatar" type="checkbox" />
+        <label class="ac-label" for="ac-members.put-avatar"><span class="opcode">PUT</span>members/{id or username}/avatar</label>
         <article class="ac-sub-text">
-          <p>My younger brother was in London when the Martians fell at Woking.
-						 He was a medical student working for an imminent examination,
-						 and he heard nothing of the arrival until Saturday morning.
-						 The morning papers on Saturday contained, in addition to lengthy
-						 special articles on the planet Mars, on life in the planets,
-						 and so forth, a brief and vaguely worded telegram, all the more
-						 striking for its brevity.
-					</p>
-					<p>The Martians, alarmed by the approach of a crowd, had killed a
-					   number of people with a quick-firing gun, so the story ran.  The
-						 telegram concluded with the words: "Formidable as they seem to be,
-						 the Martians have not moved from the pit into which they have
-						 fallen, and, indeed, seem incapable of doing so.  Probably this
-						 is due to the relative strength of the earth's gravitational
-						 energy."  On that last text their leader-writer expanded very
-						 comfortingly.
-					</p>
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>avatar</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">avatars must be a valid file on the database. </div>
+            <div class="param data">a valid file id.
+            </div>
+            <div class= "param default">[none]</div>
+          </div>
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">The requested field was updated.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested fields.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested fields.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Returned if avatar parameters failed to update because file
+              argument contained invalid data that could not pass validation.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
         </article>
-      </div>
+      </div> <!-- POST members/{id}/avatar -->
+
+
+<!-- PUT members/{id or username}/bio -->
+
+
+      <div class="ac-sub put">
+        <input class="ac-input" id="ac-members.put-bio" name="ac-members.put-bio" type="checkbox" />
+        <label class="ac-label" for="ac-members.put-bio"><span class="opcode">PUT</span>members/{id or username}/bio</label>
+        <article class="ac-sub-text">
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class= "param-row">
+            <div class="param name"><p>bio</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">The user's biogrpahical information"</div>
+            <div class="param data">a string with a length from 1 to 16384.</div>
+            <div class="param default">[none]</div>
+          </div>
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">The requested field was updated.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested fields.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Returned if some of the parameters failed to pass validation.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- POST members/{id}/bio -->
+
+
+<!-- PUT members/{id or username}/fullName -->
+
+
+      <div class="ac-sub put">
+        <input class="ac-input" id="ac-members.put-fullname" name="ac-members.put-fullname" type="checkbox" />
+        <label class="ac-label" for="ac-members.put-fullname"><span class="opcode">PUT</span>members/{id or username}/fullName</label>
+        <article class="ac-sub-text">
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>fullName</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">a valid file name. </div>
+            <div class="param data">a string with a length from 0 to 16384. Cannot begin
+              or end with a space.
+            </div>
+            <div class= "param default">[none]</div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">The requested field was updated.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested fields.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">
+              Returned if some parameter could not pass validation.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- POST members/{id}/fullName -->
+
+
+<!-- PUT members/{id or username}/inititals -->
+
+
+      <div class="ac-sub put">
+        <input class="ac-input" id="ac-members.put-initials" name="ac-members.put-initials" type="checkbox" />
+        <label class="ac-label" for="ac-members.put-initials"><span class="opcode">PUT</span>members/{id or username}/initials</label>
+        <article class="ac-sub-text">
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>initials</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">a valid file name. </div>
+            <div class="param data">a string with a length from 1 to 4. Cannot begin
+              or end with a space.
+            </div>
+            <div class= "param default">[none]</div>
+          </div>
+
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">The requested field was updated.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested fields.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note">Returned if the parameter failed to pass validation.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- POST members/{id}/initials -->
+
+
+<!-- PUT members/{id or username}/username -->
+
+
+      <div class="ac-sub put">
+        <input class="ac-input" id="ac-members.put-username" name="ac-members.put-username" type="checkbox" />
+        <label class="ac-label" for="ac-members.put-username"><span class="opcode">PUT</span>members/{id or username}/username</label>
+        <article class="ac-sub-text">
+          <h1>Arguments</h1>
+          <div class="param-row">
+            <div class="param name head">Name</div>
+            <div class="param reqd head">Req'd?</div>
+            <div class="param desc head">Description</div>
+            <div class="param data head">Valid Values</div>
+            <div class="param default head">Default Value</div>
+          </div>
+          <div class="param-row">
+            <div class="param name"><p>initials</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">a valid file name. </div>
+            <div class="param data">a string with a length from 1 to 4. Cannot begin
+              or end with a space.
+            </div>
+            <div class= "param default">[none]</div>
+          </div>
+          <h1>Responses</h1>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
+            <div class= "response note">The requested field was updated.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 400</div></div>
+            <div class= "response note">
+              Returned if the user is authenticated, but lacks the permission to view the
+              requested fields.
+            </div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 401</div></div>
+            <div class= "response note"> Returned if the parameter failed to pass validation.</div>
+          </div>
+          <div class="response-row">
+            <div class= "response status"><div class= "pill err">STATUS 404</div></div>
+            <div class= "response note">
+              Returned if the user is not authenticated, or the supplied {id} does
+              not exist.
+            </div>
+          </div>
+        </article>
+      </div> <!-- POST members/{id}/username -->
+
+
+
 
     </article><!--/ac-text-->
 
-  </div><!--/ac--><!-- BUDGETS -->
+  </div><!--/ac--><!-- MEMBERS -->
 
 
 
-<!-- MEMBERS -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- NOTIFICATIONS -->
 
 
 
