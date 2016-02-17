@@ -229,7 +229,7 @@
       </div><!-- GET budgets/{id} -->
 
 
-<!-- GET bugets/{id}/fields/ -->
+<!-- GET budgets/{id}/fields/ -->
 
 
       <div class="ac-sub get">
@@ -1358,8 +1358,8 @@
         <label class="ac-label" for="ac-members.get"><span class="opcode">GET</span>members/{idMember or username}/</label>
         <article class="ac-sub-text">
           <h1>Implementation Notes</h1>
-          If you specify me as the username, this call will respond as if you had supplied the username associated
-          with the supplied token
+          THE MOTHER OF ALL CALLS! If you specify me as the username, this call will respond as if you had supplied the username associated
+          with the supplied token.
           <h1>Arguments</h1>
           <div class="param-row">
             <div class="param name head">Name</div>
@@ -1375,12 +1375,49 @@
               by the supplied comma delimited list.</div>
             <div class="param data">all or a comma separated list of:
               <ul>
-                <li>addAttachmentToLine</li>
-                <li>addMemberToBoard</li>
-                <li>createBoard</li>
+                <li>addAttachmentToCard</li>
+                <li>addCardToList</li>
+                <li>addMemberToBudget</li>
+                <li>addMemberToCard</li>
+                <li>addMemberToOrganization</li>
+                <li>addOrganziationToBudget</li>
+                <li>commentCard</li>
+                <li>convertFromCardToList</li>
+                <li>copyBudget</li>
+                <li>copyCard</li>
+                <li>copyList</li>
+                <li>createBudget</li>
+                <li>createCard</li>
+                <li>createList</li>
                 <li>createOrganization</li>
+                <li>createTimeline</li>
+                <li>deleteAttachementFromCard</li>
+                <li>deleteBudget</li>
+                <li>deleteCard</li>
+                <li>deleteCardFromList</li>
+                <li>deleteList</li>
+                <li>makeAdminOfBudget</li>
+                <li>makeAdminOfOrganization</li>
+                <li>makeBudgetTemplate</li>
+                <li>makeNormalMemberOfOrganization</li>
+                <li>moveCardFromBudget</li>
+                <li>moveCardToBudget</li>
+                <li>moveListFromBudget</li>
+                <li>moveListToBudget</li>
+                <li>makeNormalMemberofBoard</li>
+                <li>makeObserverofBudget</li>
+                <li>removeMemberFromBudget</li>
+                <li>removeMemberFromCard</li>
+                <li>removeOrganizationFromBudget</li>
+                <li>removeTimelineFromCard</li>
+                <li>updateBudget</li>
+                <li>updateCard</li>
+                <li>updateList</li>
+                <li>updateMember</li>
+                <li>updateMember</li>
+                <li>updateOrganziation</li>
+                <li>updateTimeline</li>
               </ul>
-              TODO: finish out this list! It basically defines the application!!
             </div>
             <div class= "param default">all</div>
           </div>
@@ -1388,8 +1425,7 @@
             <div class="param name"><p>actions_limit</p></div>
             <div class="param reqd">optional</div>
             <div class="param desc">limits the number of actions returned</div>
-            <div class="param data">a number from 0 to 1000.
-            </div>
+            <div class="param data">a number from 0 to 1000.</div>
             <div class= "param default">50</div>
           </div>
           <div class="param-row">
@@ -1419,6 +1455,116 @@
             <div class="param data">a string with a length from 1 to 16384.</div>
             <div class="param default">[none]</div>
           </div>
+          <div class= "param-row">
+            <div class="param name"><p>cards</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Returns the the list of cards filtered by this
+              parameter as well as the following cards_xxxx filters.
+            </div>
+            <div class="param data">One of:
+              <ul>
+                <li>all</li>
+                <li>closed</li>
+                <li>none</li>
+                <li>open</li>
+                <li>visible</li>
+              </ul>
+            </div>
+            <div class="param default">none</div>
+          </div>
+          <div class= "param-row">
+            <div class="param name"><p>card_fields</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Defines the card fields that are returned for
+              each card found in the filtered list.
+            </div>
+            <div class="param data">all or a comma-separated list of:
+              <ul>
+                <li>closed</li>
+                <li>dataAmount</li>
+                <li>dateLastActivity</li>
+                <li>desc</li>
+                <li>idBudget</li>
+                <li>idHead</li>
+                <li>idLabels</li>
+                <li>idMemberships</li>
+                <li>idParent</li>
+                <li>idSplits</li>
+                <li>idTail</li>
+                <li>idTimelines</li>
+                <li>idVersion</li>
+                <li>name</li>
+                <li>pos</li>
+                <li>shortUrl</li>
+                <li>url</li>
+              </ul>
+            </div>
+            <div class="param default">all</div>
+          </div>
+          <div class= "param-row">
+            <div class="param name"><p>card_members</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">If set to true, the returned card list
+              will contain a list of members assigned to that card.
+            </div>
+            <div class="param data">true or false</div>
+            <div class="param default">false</div>
+          </div>
+          <div class= "param-row">
+            <div class="param name"><p>card_member_fields</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">If you have set card_member to true, this
+              argument will define which fields are returned for each card member
+              found on the card
+            </div>
+            <div class="param data">all or a comma-separated list of:
+              <ul>
+                <li>avatar</li>
+                <li>bio</li>
+                <li>confirmed</li>
+                <li>fullName</li>
+                <li>initials</li>
+                <li>memberType</li>
+                <li>url</li>
+                <li>username</li>
+              </div>
+            <div class="param default">avatar, fullName, initials, username</div>
+          </div>
+          <div class= "param-row">
+            <div class="param name"><p>card_attachments</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">If set to true, the returned card list
+              will contain a list of attachments linked to that card.
+            </div>
+            <div class="param data">true or false</div>
+            <div class="param default">false</div>
+          </div>
+          <div class= "param-row">
+            <div class="param name"><p>card_attachments</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">If card_attachments is set to true, the returned
+              card list will contain the fields in this list.
+            </div>
+            <div class="param data">all or a comma-separated list of:
+              <ul>
+                <li>bytes</li>
+                <li>date</li>
+                <li>bgColor</li>
+                <li>idMember</li>
+                <li>isUpload</li>
+                <li>mimeType</li>
+                <li>name</li>
+                <li>thumbnail</li>
+                <li>url</li>
+              </ul>
+            </div>
+            <div class="param default">url, thumbnail</div>
+          </div>
+
+          <!-- pickup @budgets/boards next time -->
+
+
+
           <h1>Responses</h1>
           <div class="response-row">
             <div class= "response status"><div class= "pill ok">STATUS 202</div></div>
