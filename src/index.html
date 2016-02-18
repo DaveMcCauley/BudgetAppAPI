@@ -1560,10 +1560,474 @@
             </div>
             <div class="param default">url, thumbnail</div>
           </div>
-
-          <!-- pickup @budgets/boards next time -->
-
-
+					<div class= "param-row">
+            <div class="param name"><p>budgets</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Include this parameter to return the budgets
+							the member is associated with. Set the parameter to the desired association.
+            </div>
+            <div class="param data">all or a comma-separated list of:
+              <ul>
+                <li>closed</li>
+                <li>members</li>
+                <li>open</li>
+                <li>organization</li>
+                <li>pinned</li>
+                <li>public</li>
+                <li>starred</li>
+                <li>unpinned</li>
+              </ul>
+            </div>
+            <div class="param default">[none]</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>budget_fields</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">This is a list of fields to included in the budget
+							list associated with the user. Only effective if boards is set.
+            </div>
+            <div class="param data">all or a comma-separated list of:
+              <ul>
+                <li>closed</li>
+                <li>dateLastActivitiy</li>
+                <li>dateLastView</li>
+                <li>desc</li>
+                <li>idOrganization</li>
+                <li>invitations</li>
+                <li>invited</li>
+                <li>memberships</li>
+                <li>name</li>
+                <li>prefs</li>
+                <li>shortLink</li>
+                <li>shortURL</li>
+                <li>starred</li>
+                <li>subscribed</li>
+                <li>url</li>
+              </ul>
+            </div>
+            <div class="param default">name, closed, idOrganization, pinned</div>
+          </div>
+          <div class= "param-row">
+            <div class="param name"><p>budget_actions</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">This is a list of actions to included in each budget
+							associated with the user. Only effective if boards is set.
+            </div>
+            <div class="param data">all or a comma-separated list of:
+              <ul>
+                <li>addAttachmentToCard</li>
+                <li>addCardToList</li>
+                <li>addMemberToBudget</li>
+                <li>addMemberToCard</li>
+                <li>addMemberToOrganization</li>
+                <li>addOrganziationToBudget</li>
+                <li>commentCard</li>
+                <li>convertFromCardToList</li>
+                <li>copyBudget</li>
+                <li>copyCard</li>
+                <li>copyList</li>
+                <li>createBudget</li>
+                <li>createCard</li>
+                <li>createList</li>
+                <li>createOrganization</li>
+                <li>createTimeline</li>
+                <li>deleteAttachementFromCard</li>
+                <li>deleteBudget</li>
+                <li>deleteCard</li>
+                <li>deleteCardFromList</li>
+                <li>deleteList</li>
+                <li>makeAdminOfBudget</li>
+                <li>makeAdminOfOrganization</li>
+                <li>makeBudgetTemplate</li>
+                <li>makeNormalMemberOfOrganization</li>
+                <li>moveCardFromBudget</li>
+                <li>moveCardToBudget</li>
+                <li>moveListFromBudget</li>
+                <li>moveListToBudget</li>
+                <li>makeNormalMemberofBoard</li>
+                <li>makeObserverofBudget</li>
+                <li>removeMemberFromBudget</li>
+                <li>removeMemberFromCard</li>
+                <li>removeOrganizationFromBudget</li>
+                <li>removeTimelineFromCard</li>
+                <li>updateBudget</li>
+                <li>updateCard</li>
+                <li>updateList</li>
+                <li>updateMember</li>
+                <li>updateMember</li>
+                <li>updateOrganziation</li>
+                <li>updateTimeline</li>
+              </ul>
+            </div>
+            <div class="param default">[none]</div>
+          </div>
+          <div class= "param-row">
+            <div class="param name"><p>budget_actions_format</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Budget actions can be returned as a list, as 
+							defined in the budget_actions parameter, or a simpliefed values set 
+							here. count - returns only the number of operations in each of the
+							action categories listed in budget_actions. minimal - returns only 
+							a short snipped description of each item along with a minimuized field
+							selection for each action.
+            </div>
+            <div class="param data">one of:
+              <ul>
+                <li>count</li>
+                <li>list</li>
+                <li>minimal</li>
+              </ul>
+            </div>
+            <div class="param default">[none]</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>budget_memberships</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">By default each budget is returned with no membership
+							information. To includes it set this parameter.
+            </div>
+            <div class="param data">all or a comma-separated list of:
+              <ul>
+                <li>active</li>
+                <li>admin</li>
+                <li>deactivated</li>
+                <li>me</li>
+                <li>normal</li>
+              </ul>
+            </div>
+            <div class="param default">none</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>budget_organization</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Yiou can include organziation information with
+							your budget list by setting this term.
+            </div>
+            <div class="param data">true or false
+            </div>
+            <div class="param default">false</div>
+          </div>
+          <div class= "param-row">
+            <div class="param name"><p>budget_organization_fields</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">If you've included budgets, set this parameter to
+							choose which fields to return for each budget.
+            </div>
+            <div class="param data">all or a comma-separated list of:
+              <ul>
+                <li>memberCount</li>
+                <li>desc</li>
+                <li>displayName</li>
+                <li>idBoards</li>
+                <li>invitations</li>
+                <li>invited</li>
+                <li>logoHash</li>
+                <li>memberships</li>
+                <li>name</li>
+                <li>prefs</li>
+                <li>products</li>
+                <li>url</li>
+                <li>website</li>							
+              </ul>
+            </div>
+            <div class="param default">name, displayName</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>boardsInvited</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">List of boards the member{id} has been invited to.
+            </div>
+            <div class="param data">all or a comma-separated list of:
+              <ul>
+                <li>closed</li>
+                <li>members</li>
+                <li>open</li>
+                <li>organization</li>
+                <li>pinned</li>
+                <li>public</li>
+                <li>starred</li>
+                <li>unpinned</li>
+              </ul>
+            </div>
+            <div class="param default">[none]</div>
+          </div>
+          <div class= "param-row">
+            <div class="param name"><p>boardsInvited_fields</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Include this parameter to choose which fields
+							to included in the invited list.
+            </div>
+            <div class="param data">all or a comma-separated list of:
+              <ul>
+                <li>closed</li>
+                <li>dateLastActivitiy</li>
+                <li>dateLastView</li>
+                <li>desc</li>
+                <li>idOrganization</li>
+                <li>invitations</li>
+                <li>invited</li>
+                <li>memberships</li>
+                <li>name</li>
+                <li>prefs</li>
+                <li>shortLink</li>
+                <li>shortURL</li>
+                <li>starred</li>
+                <li>subscribed</li>
+                <li>url</li>
+              </ul>
+            </div>
+            <div class="param default">name, closed, idOrganization. pinned</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>budgetStars</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">If set to true, it will return a list of boards
+							the user has starred.
+            </div>
+            <div class="param data">true or false
+            </div>
+            <div class="param default">false</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>organizations</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Optinally returns a list of organizations the 
+							member belongs to.
+            </div>
+            <div class="param data">One of:
+              <ul>
+                <li>all</li>
+                <li>members</li>
+                <li>none</li>
+                <li>public</li>
+							</ul>
+            </div>
+            <div class="param default">[none]</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>organizations</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Organization fields to be included in the 
+							organization list.
+            </div>
+            <div class="param data">One of:
+              <ul>
+                <li>memberCount</li>
+                <li>desc</li>
+                <li>displayName</li>
+                <li>idBoards</li>
+                <li>invitations</li>
+                <li>invited</li>
+                <li>logoHash</li>
+                <li>memberships</li>
+                <li>name</li>
+                <li>prefs</li>
+                <li>products</li>
+                <li>url</li>
+                <li>website</li>							
+							</ul>
+            </div>
+            <div class="param default">all</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>organizationsInvited</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Optinally returns a list of organizations the 
+							member has been invited to.
+            </div>
+            <div class="param data">One of:
+              <ul>
+                <li>all</li>
+                <li>members</li>
+                <li>none</li>
+                <li>public</li>
+							</ul>
+            </div>
+            <div class="param default">[none]</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>organizationInvited_fields</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Organization fields to be included in the 
+							organization list.
+            </div>
+            <div class="param data">One of:
+              <ul>
+                <li>memberCount</li>
+                <li>desc</li>
+                <li>displayName</li>
+                <li>idBoards</li>
+                <li>invitations</li>
+                <li>invited</li>
+                <li>logoHash</li>
+                <li>memberships</li>
+                <li>name</li>
+                <li>prefs</li>
+                <li>products</li>
+                <li>url</li>
+                <li>website</li>							
+							</ul>
+            </div>
+            <div class="param default">all</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>notifications</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">List of notifications for the user, filtered
+							by these notification types:
+            </div>
+            <div class="param data">all or comma-separated list of:
+              <ul>
+                <li>addAdminToBudget</li>
+                <li>addAdminToOrganization</li>
+                <li>addAttachmentToCard</li>
+                <li>addedToBudget</li>
+                <li>addedToCard</li>
+                <li>addedToOrganziation</li>
+                <li>cardDueSoon</li>
+                <li>changeCard</li>
+                <li>closeBudget</li>
+                <li>commentCard</li>
+                <li>createCard</li>
+                <li>createdCard</li>
+                <li>declinedInvitationToBudget</li>							
+                <li>declinedInvitationToOrganziation</li>							
+                <li>invitedToBudget</li>							
+                <li>invitedToOrganziation</li>							
+                <li>makeAdminOfBaord</li>							
+                <li>makeAdminOfOrganziation</li>							
+                <li>memberJointedBudgetApp</li>							
+                <li>mentionedOnCard</li>							
+                <li>removedFromBudget</li>							
+                <li>removedFromCard</li>							
+                <li>removedFromOrganization</li>							
+             </ul>
+            </div>
+            <div class="param default">all</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>notifications_limit</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Limites the number of notifications returned.
+            </div>
+            <div class="param data">
+							a number from 1 to 1000
+            </div>
+            <div class="param default">50</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>notifications_fields</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Notification fields to be returned in the 
+							notifications list.
+            </div>
+            <div class="param data">all or comma-separated list of:
+              <ul>
+                <li>data</li>
+                <li>date</li>
+                <li>idMemberCreator</li>
+                <li>type</li>
+                <li>unread</li>
+							</ul>
+            </div>
+            <div class="param default">50</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>notification_memberCreator_fields</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Optinally returns member fields for the
+							notification creater.
+            </div>
+            <div class="param data">all or a comma-separated list of:
+              <ul>
+                <li>avatarHash</li>
+                <li>bio</li>
+                <li>fullName</li>
+                <li>inititals</li>
+                <li>memberType</li>
+                <li>status</li>
+                <li>url</li>
+                <li>username</li>	
+							</ul>
+            </div>
+            <div class="param default">[none]</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>notifications_befre</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Optinally returns only notifications before the 
+							specified date.
+            </div>
+            <div class="param data">a date
+            </div>
+            <div class="param default">[none]</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>notifications_after</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Optinally returnsonly notifications after the 
+							specified date.
+            </div>
+            <div class="param data">a date
+            </div>
+            <div class="param default">[none]</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>tokens</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Rturns a list of the users's tokens.
+            </div>
+            <div class="param data">
+              <ul>
+                <li>all</li>
+                <li>none</li>
+							</ul>
+            </div>
+            <div class="param default">none</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>fields</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">Optinally returns a list of organizations the 
+							member has been invited to.
+            </div>
+            <div class="param data">One of:
+              <ul>
+                <li>all</li>
+                <li>members</li>
+                <li>none</li>
+                <li>public</li>
+							</ul>
+            </div>
+            <div class="param default">[none]</div>
+          </div>
+					<div class= "param-row">
+            <div class="param name"><p>fields</p></div>
+            <div class="param reqd">optional</div>
+            <div class="param desc">The member's data fields.
+            </div>
+            <div class="param data">all or a comma separated list of:
+              <ul>
+                <li>avatarHash</li>
+                <li>avatarSource</li>
+                <li>bio</li>
+                <li>confirmed</li>
+                <li>email</li>
+                <li>idBoards</li>
+                <li>idBoardsPinned</li>
+                <li>idOrganizations</li>
+                <li>initials</li>
+                <li>memberType</li>
+                <li>oneTimeMessagesDismissed</li>
+                <li>prefs</li>
+                <li>products</li>
+                <li>status</li>
+                <li>url</li>
+                <li>username</li>
+							</ul>
+            </div>
+            <div class="param default">[none]</div>
+          </div>
 
           <h1>Responses</h1>
           <div class="response-row">
@@ -1602,7 +2066,7 @@
             </div>
           </div>
         </article>
-      </div> <!-- POST members/{id}/ -->
+      </div> <!-- GET members/{id}/ -->
 
 
 
@@ -1980,6 +2444,20 @@
         </article>
       </div> <!-- POST members/{id}/username -->
 
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 
 
 
