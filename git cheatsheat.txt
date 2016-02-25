@@ -1,14 +1,14 @@
 Remotes
-git branch --set-upstream-to=<remote>/<branch?
+git branch --set-upstream-to=<remote>/<branch>
 git fetch  NOTE: typically followed by a merge doesnt overwright working copy
 git pull  NOTE: merges in the remote changes.
-git push -u origin feature_branch_name (pushes to new branch in remote, sets tracking)
-git push --all -u (to push all branches)
 git remote rename <old> <new>
 git remote remove <remote>
 git remote show <remote>
 git remote -v 
 git remote prune (removes unused branches)
+git push origin master:foo will push your local master branch to the branch foo on the remote origin
+git config receive.denyCurrentBranch ignore
 
 
 Branches & Checkout
@@ -42,6 +42,8 @@ git tag <1.0.0> <commit-sha>
 		
 Commits
 git reset --hard <last good sha> "like it never happened"
+git reset --soft orgin/master  rollback branch to same commit as origin/master,
+                               but keeps changes and moves files to staging
 git reset <sha> (undoes all commits, but preserves local changes)
 git reflog and git reset or git checkout  "undo's the above"
 git commit --amend
@@ -96,3 +98,14 @@ Files
 git rm <file>
 git rm --cached <file> (removes from git, but keeps on disk)
 git mv <old name> <new name>
+
+
+Commit only selected files to a branch
+1-Checkout just the file you want from your old branch
+		git checkout old_branch path/to/some/file
+2-repeat as necessary for additional files
+3-Commit the files to your new branch
+		git commit -a
+4-Push new branch to your origin
+		git push origin master
+
