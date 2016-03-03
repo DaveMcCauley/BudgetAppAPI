@@ -1,7 +1,17 @@
+/* Import fonts and any partials */
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700,900,700italic);
+
+// Basic Text size definitions
 $header-text-size:    16px;
 $base-text-size:      14px;
 $small-text-size:     13px;
 $operator-text-size:  11px;
+
+// Basic Text weight definitions
+$light:       300;
+$normal:      400;
+$heavy:       700;
+$extra-heavy: 900;
 
 
 // Color definitions
@@ -26,7 +36,7 @@ $param-color-border:      rgb(204, 204, 204);
 $param-color-border-head: $reg-gray;
 $param-color-font:        $reg-black;
 $param-color-font-head:   $reg-gray;
-$param-font-weight:       600;
+$param-font-weight:       $normal;
 $param-text-size:         14px;
 $param-text-size-head:    12px;
 
@@ -53,7 +63,7 @@ $delete-color-border: rgb(232, 198, 199);
 $opcode-border-radius: 6px;
 $opcode-font-color:    $reg-white;
 $opcode-font-size:     11px;
-$opcode-font-weight:   600;
+$opcode-font-weight:   $heavy;
 $opcode-height:        18px;
 $opcode-width:         50px;
 
@@ -67,7 +77,7 @@ $pill-color-text:       $reg-white;
 $pill-color-text-warn:  $reg-black;
 $pill-font-size:        11px;
 $pill-font-size-warn:   12px;
-$pill-font-weight:      600;
+$pill-font-weight:      $heavy;
 $pill-height:           20px;
 $pill-width:            75px;
 $pill-padding-top:      6px;
@@ -75,7 +85,7 @@ $pill-padding-top:      6px;
 
 // route content defintions
 $subtext-font-size-h1:   1em;
-$subtext-font-weight-h1: 600;
+$subtext-font-weight-h1: $extra-heavy;
 
 
 // special definitions for json code display
@@ -88,7 +98,7 @@ $json-font-weight:      500;
 
 
 // font stacks for consistency
-$normal-font-stack: 'Source Sans Pro', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$normal-font-stack: 'Lato', 'Source Sans Pro', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $code-font-stack:   Menlo, Monaco, Consolas, 'Courier New', monospace;
 
 
@@ -119,10 +129,11 @@ body {
 h1 {
   margin-bottom: 0;
   padding-bottom: 0;
+  font-weight: $extra-heavy;
 }
 
 h3 {
-  font-weight: 300;
+  font-weight: $light;
   margin-top: 0;
 }
 
@@ -141,7 +152,7 @@ h3 {
   background-color: $ac-whitesmoke;
   cursor: pointer;
   display: block;
-  font-weight: 700;
+  font-weight: $heavy;
   margin-bottom: .5em;
   padding: .5em 1em;
   position: relative;
@@ -198,7 +209,7 @@ h3 {
 
 .ac-sub .ac-label {
   background: none;
-  font-weight: 600;
+  font-weight: $heavy;
   margin-bottom: 0;
   padding: .5em 2em;
 }
@@ -429,7 +440,7 @@ h3 {
   content: 'Example';
   font-family: $normal-font-stack;
   font-size: $json-font-size-before;
-  font-weight: 700;
+  font-weight: $heavy;
   left: -0px;
   position: absolute;
   text-transform: uppercase;
