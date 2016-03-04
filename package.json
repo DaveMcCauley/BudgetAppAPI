@@ -39,7 +39,8 @@
     "grunt-targethtml": "latest",
     "load-grunt-tasks": "latest",
     "grunt-express": "latest",
-    "grunt-scss-lint": "latest"
+    "grunt-scss-lint": "latest",
+    "normalize.css": "latest"
   },
   "dependencies": {
     "body-parser": "~1.5.2",
@@ -49,6 +50,7 @@
     "method-override": "~2.1.2",
     "mongoose": "latest",
     "morgan": "~1.2.2",
+    "normalize.css": "^3.0.3",
     "time-grunt": "^1.0.0"
   }
 }

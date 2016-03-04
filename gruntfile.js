@@ -41,7 +41,7 @@ module.exports = function(grunt) {
       dev: {
         expand : true,
         cwd    : 'src/assets/',
-        src    : ['css/**/*.css'],
+        src    : ['css/**/*.css','!css/normalize.css'],
         dest   : 'src/assets/'
       },
 
@@ -51,7 +51,7 @@ module.exports = function(grunt) {
         },
         expand : true,
         cwd    : 'prod/assets/',
-        src    : ['css/**/*.css'],
+        src    : ['css/**/*.css','!css/normalize.css'],
         dest   : 'prod/assets/'
       }
     },
@@ -95,6 +95,7 @@ module.exports = function(grunt) {
           // 'desitination': 'source'
         }
       }
+
     },
 
 
@@ -177,9 +178,10 @@ module.exports = function(grunt) {
           port: 3000,
           hostname: 'localhost',
           bases:['./prod'],
-          livereload:true
+          livereload: true
         }
       }
+
     },
 
 
@@ -295,6 +297,7 @@ module.exports = function(grunt) {
         path: 'http://localhost:3000/index.html',
         app: 'FirefoxDeveloperEdition'
     }
+
 },
 
 
