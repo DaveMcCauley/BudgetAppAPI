@@ -2,6 +2,8 @@ Remotes
 git branch --set-upstream-to=<remote>/<branch>
 git fetch  NOTE: typically followed by a merge doesnt overwright working copy
 git pull  NOTE: merges in the remote changes.
+git pull --rebase NOTE: destroys all local changes, avoids merge.
+git rebase --continue NOTE: call after pull--rebase and merging anything git can't handle
 git remote rename <old> <new>
 git remote remove <remote>
 git remote show <remote>
@@ -108,4 +110,33 @@ Commit only selected files to a branch
 		git commit -a
 4-Push new branch to your origin
 		git push origin master
+		
 
+Alternate to git pull from remote...
+		git fetch origin --prune , 
+	inspect changes by...
+		git checkout origin/branch-name
+		git checkout branch-name
+		git merge --ff-only origin/branch-name 
+  if you have local changes, this will fail.. then...
+		git rebase --preserve-merges origin/branch-name 
+  once it's done your local branch will be up-to-date with the changes from
+	the remote, and your commits will be the newest in the history. Cleaner 
+	history, no superfluous merge commits.
+		update-from = "!f() { git fetch $1 --prune; git merge --ff-only $1/$2 || git rebase --preserve-merges $1/$2; }; f"
+
+http://stackoverflow.com/questions/3357122/git-pull-vs-git-fetch-git-rebase
+If you have...
+- o - o - o - H - A - B - C (master)
+               \
+                P - Q - R (origin/master)
+
+Then git pull produces...
+- o - o - o - H - A - B - C - X (master)
+               \             /
+                P - Q - R --- (origin/master)
+								
+git fetch + git rebase (or git pull --rebase) gives this...
+- o - o - o - H - P - Q - R - A' - B' - C' (master)
+                          |
+                          (origin/master)
