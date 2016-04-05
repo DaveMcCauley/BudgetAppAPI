@@ -1,17 +1,26 @@
 Remotes
-git branch --set-upstream-to=<remote>/<branch>
-git fetch  NOTE: typically followed by a merge doesnt overwright working copy
-git pull  NOTE: merges in the remote changes.
-git pull --rebase NOTE: destroys all local changes, avoids merge.
-git rebase --continue NOTE: call after pull--rebase and merging anything git can't handle
-git remote rename <old> <new>
-git remote remove <remote>
-git remote show <remote>
-git remote -v 
-git remote prune (removes unused branches)
-git push origin master:foo will push your local master branch to the branch foo on the remote origin
-git config receive.denyCurrentBranch ignore
+		git branch --set-upstream-to=<remote>/<branch>
+		git fetch  NOTE: typically followed by a merge doesnt overwright working copy
+		git pull  NOTE: merges in the remote changes.
+		git pull --rebase NOTE: destroys all local changes, avoids merge.
+		git rebase --continue NOTE: call after pull--rebase and merging anything git can't handle
+		git remote rename <old> <new>
+		git remote remove <remote>
+		git remote show <remote>
+		git remote -v 
+		git remote prune (removes unused branches)
+		git push origin master:foo will push your local master branch to the branch foo on the remote origin
+		git config receive.denyCurrentBranch ignore
+	For new branches in the remote.
+		Make sure you've pulled the new upstream branch into your local repo:
+		First, ensure your working tree is clean (commit/stash/revert any changes)
+		"git fetch upstream" to retrieve the new upstream branch
 
+		Create and switch to a local version of the new upstream branch 
+		"git checkout -b newbranch upstream/newbranch"
+
+		When you're ready to push the new branch to origin (-u to set tracking):
+		"git push -u origin newbranch"
 
 Branches & Checkout
 git checkout <existing branch>
@@ -55,6 +64,14 @@ Committed on the wrong branch
 	git reset --soft HEAD~1
 	*create or checkout branch*
 	git commit 
+Changes on wrong branch (not committed)	
+	git checkout -b newbranch  (changes remain as-is)
+  -or-
+	git checkout existingbranch (changes remain as-is)
+Changes, another approach
+	git stash
+	git checkout anotherbranch
+	git stash apply
 Recover inadvertently deleted, not committed
 	git reset HEAD --hard		NOTE: does not keep WIP.	
 Drop the last commit
