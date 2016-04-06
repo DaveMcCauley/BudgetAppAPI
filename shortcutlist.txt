@@ -53,3 +53,12 @@ Text
 
 View
 goto line [ctrl]+G
+
+NPM
+npm uninstall <package>     //Run this from the node_modules folder!
+npm uninstall -g <package>  // Uninstall global package
+npm outdated                // list of outdated pacakges (local)
+npm outdate -g --depth=0    // global outdated packages
+npm update                  // update packages locally
+npm update -g               // updaet packages globally
+npm install                 // install locally
